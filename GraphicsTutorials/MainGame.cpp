@@ -1,16 +1,18 @@
 #include "MainGame.h"
 #include <Bengine/Errors.h>
 #include <Bengine/Bengine.h>
+#include <Bengine/ResourceManager.h>
 
 #include <iostream>
 #include <string>
 
-MainGame::MainGame() : 
-	_screenWidth(950), 
-	_screenHeight(650), 
-	_gameState(GameState::PLAY), 
+MainGame::MainGame() :
+	_screenWidth(950),
+	_screenHeight(650),
+	_gameState(GameState::PLAY),
 	_time(0.0f),
-	_maxFPS(60.0f)
+	_maxFPS(60.0f),
+	_spriteBatch()
 {
 	_camera.init(_screenWidth, _screenHeight);
 }
@@ -24,13 +26,6 @@ void MainGame::run()
 {
 	initSystems();
 
-	// Initialize our sprite (temporary)
-	_sprites.push_back(new Bengine::Sprite());
-	_sprites.back()->init(0.0f, 0.0f, _screenWidth / 2, _screenWidth / 2, "Textures/PNG/CharacterRight_Standing.png");
-
-	_sprites.push_back(new Bengine::Sprite());
-	_sprites.back()->init(_screenWidth / 2, 0.0f, _screenWidth / 2, _screenWidth / 2, "Textures/PNG/CharacterRight_Standing.png");
-
 	// This only returns when the game ends
 	gameLoop();
 }
@@ -43,6 +38,8 @@ void MainGame::initSystems()
 	_window.create("Game Engine", _screenWidth, _screenHeight, 0);
 
 	initShaders();
+
+	_spriteBatch.init();
 }
 
 void MainGame::initShaders()
@@ -163,10 +160,25 @@ void MainGame::drawGame()
 
 	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
-	for (auto sprite : _sprites)
+	_spriteBatch.begin();
+
+	glm::vec4 pos(0.0f, 0.0f, 50.0f, 50.0f);
+	glm::vec4 uv(0.0f, 0.0f, 1.0f, 1.0f);
+	static Bengine::GLTexture texture = Bengine::ResourceManager::getTexture("Textures/PNG/CharacterRight_Standing.png");
+	Bengine::Color color;
+	color.r = 255;
+	color.g = 255;
+	color.b = 255;
+	color.a = 255;
+
+	for (int i = 0; i < 1000; i++)
 	{
-		sprite->draw();
+		_spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
+		_spriteBatch.draw(pos + glm::vec4(50, 0, 0, 0), uv, texture.id, 0.0f, color);
 	}
+
+	_spriteBatch.end();
+	_spriteBatch.renderBatch();
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 
