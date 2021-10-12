@@ -11,8 +11,12 @@ MainGame::MainGame() :
 	_screenHeight(650),
 	_gameState(GameState::PLAY),
 	_time(0.0f),
+	_fps(0.0f),
+	_bullets(),
 	_maxFPS(60.0f),
-	_spriteBatch()
+	_spriteBatch(),
+	_inputManager(),
+	_fpsLimiter()
 {
 	_camera.init(_screenWidth, _screenHeight);
 }
@@ -40,6 +44,7 @@ void MainGame::initSystems()
 	initShaders();
 
 	_spriteBatch.init();
+	_fpsLimiter.init(_maxFPS);
 }
 
 void MainGame::initShaders()
@@ -56,33 +61,39 @@ void MainGame::gameLoop()
 	// Will loop until we set _gameState to EXIT
 	while (_gameState != GameState::EXIT)
 	{
-		// Used for frame time measuring
-		float startTicks = SDL_GetTicks();
+		_fpsLimiter.begin();
 
 		processInput();
 		_time += 0.01;
 
 		_camera.update();
 
+		for (int i = 0; i < _bullets.size();)
+		{
+			// Update all bullets
+			if (_bullets[i].update())
+			{
+				_bullets[i] = _bullets.back();
+				_bullets.pop_back();
+			}
+			else
+			{
+				i++;
+			}
+		}
+
 		drawGame();
-		calculateFPS();
+
+		_fps = _fpsLimiter.end();
 
 		// Print only once every 10th frame
 		static int frameCounter = 0;
 		frameCounter++;
 
-		if (frameCounter == 10)
+		if (frameCounter == 10000)
 		{
 			std::cout << _fps << std::endl;
 			frameCounter = 0;
-		}
-
-		float frameTicks = SDL_GetTicks() - startTicks;
-
-		// Limit the FPS to the max FPS
-		if (1000.0f / _maxFPS > frameTicks)
-		{
-			SDL_Delay(1000.0f / _maxFPS - frameTicks);
 		}
 	}
 }
@@ -92,7 +103,7 @@ void MainGame::processInput()
 {
 	SDL_Event evnt;
 
-	const float CAMERA_SPEED = 20.0f;
+	const float CAMERA_SPEED = 2.0f;
 	const float SCALE_SPEED = 0.1f;
 
 	// Will keep looping unntil there are no more events to process
@@ -104,36 +115,66 @@ void MainGame::processInput()
 			case SDL_QUIT:
 				_gameState = GameState::EXIT;
 				break;
-			case SDL_MOUSEMOTION:
-				//std::cout << evnt.motion.x << " " << evnt.motion.y << std::endl;
-				break;
 			case SDL_KEYDOWN:
-				switch (evnt.key.keysym.sym)
-				{
-				case SDLK_w:
-					_camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, CAMERA_SPEED));
-					break;
-				case SDLK_s:
-					_camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, -CAMERA_SPEED));
-					break;
-				case SDLK_a:
-					_camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0f));
-					break;
-				case SDLK_d:
-					_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0f));
-					break;
-				case SDLK_q:
-					_camera.setScale(_camera.getScale() + SCALE_SPEED);
-					break;
-				case SDLK_e:
-					_camera.setScale(_camera.getScale() - SCALE_SPEED);
-					break;
-				default:
-					break;
-				}
+				_inputManager.pressKey(evnt.key.keysym.sym);
+				break;
+			case SDL_KEYUP:
+				_inputManager.releaseKey(evnt.key.keysym.sym);
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+				_inputManager.pressKey(evnt.button.button);
+				break;
+			case SDL_MOUSEBUTTONUP:
+				_inputManager.releaseKey(evnt.button.button);
+				break;
+			case SDL_MOUSEMOTION:
+				_inputManager.setMouseCoords(evnt.motion.x, evnt.motion.y);
 				break;
 		}
 	}
+
+	if (_inputManager.isKeyPressed(SDLK_UP))
+	{
+		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, CAMERA_SPEED));
+	}
+
+	if (_inputManager.isKeyPressed(SDLK_DOWN))
+	{
+		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, -CAMERA_SPEED));
+	}
+
+	if (_inputManager.isKeyPressed(SDLK_LEFT))
+	{
+		_camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0f));
+	}
+
+	if (_inputManager.isKeyPressed(SDLK_RIGHT))
+	{
+		_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0f));
+	}
+
+	if (_inputManager.isKeyPressed(SDLK_z))
+	{
+		_camera.setScale(_camera.getScale() + SCALE_SPEED);
+	}
+
+	if (_inputManager.isKeyPressed(SDLK_x))
+	{
+		_camera.setScale(_camera.getScale() - SCALE_SPEED);
+	}
+
+	if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT))
+	{
+		glm::vec2 mouseCoords = _inputManager.getMouseCoords();
+		mouseCoords = _camera.convertScreenToWorld(mouseCoords);
+
+		glm::vec2 playerPosition(0.0f);
+		glm::vec2 direction = mouseCoords - playerPosition;
+		direction = glm::normalize(direction);
+
+		_bullets.emplace_back(playerPosition, direction, 5.0f, 1000);
+	}
+
 }
 
 void MainGame::drawGame()
@@ -149,10 +190,6 @@ void MainGame::drawGame()
 
 	GLint textureLocation = _colorProgram.getUniformLocation("playerSampler");
 	glUniform1i(textureLocation, 0);
-
-	// Set the constantly changing time variable
-	GLint timeLocation = _colorProgram.getUniformLocation("time");
-	glUniform1f(timeLocation, _time);
 
 	// Set the camera matrix
 	GLint pLocation = _colorProgram.getUniformLocation("P");
@@ -171,10 +208,11 @@ void MainGame::drawGame()
 	color.b = 255;
 	color.a = 255;
 
-	for (int i = 0; i < 1000; i++)
+	_spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
+
+	for (int i = 0; i < _bullets.size(); i++)
 	{
-		_spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
-		_spriteBatch.draw(pos + glm::vec4(50, 0, 0, 0), uv, texture.id, 0.0f, color);
+		_bullets[i].draw(_spriteBatch);
 	}
 
 	_spriteBatch.end();
@@ -186,52 +224,4 @@ void MainGame::drawGame()
 
 	// Swap our buffer and draw everything to the screen
 	_window.swapBuffer();
-}
-
-void MainGame::calculateFPS()
-{
-	static const int NUM_SAMPLES = 10;
-	static float frameTimes[NUM_SAMPLES];
-	static int currentFrame = 0;
-
-	static float prevTicks = SDL_GetTicks();
-
-	float currentTicks;
-	currentTicks = SDL_GetTicks();
-
-	_frameTime = currentTicks - prevTicks;
-	frameTimes[currentFrame % NUM_SAMPLES] = _frameTime;
-
-	prevTicks = currentTicks;
-
-	int count;
-
-	currentFrame++;
-
-	if (currentFrame < NUM_SAMPLES)
-	{
-		count = currentFrame;
-	}
-	else
-	{
-		count = NUM_SAMPLES;
-	}
-
-	float frameTimeAverage = 0;
-
-	for (int i = 0; i < count; i++)
-	{
-		frameTimeAverage += frameTimes[i];
-	}
-
-	frameTimeAverage /= count;
-
-	if (frameTimeAverage > 0)
-	{
-		_fps = 1000.0f / frameTimeAverage;
-	}
-	else
-	{
-		_fps = 60.0f;
-	}
 }
