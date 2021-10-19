@@ -133,37 +133,37 @@ void MainGame::processInput()
 		}
 	}
 
-	if (_inputManager.isKeyPressed(SDLK_UP))
+	if (_inputManager.isKeyDown(SDLK_UP))
 	{
 		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, CAMERA_SPEED));
 	}
 
-	if (_inputManager.isKeyPressed(SDLK_DOWN))
+	if (_inputManager.isKeyDown(SDLK_DOWN))
 	{
 		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, -CAMERA_SPEED));
 	}
 
-	if (_inputManager.isKeyPressed(SDLK_LEFT))
+	if (_inputManager.isKeyDown(SDLK_LEFT))
 	{
 		_camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0f));
 	}
 
-	if (_inputManager.isKeyPressed(SDLK_RIGHT))
+	if (_inputManager.isKeyDown(SDLK_RIGHT))
 	{
 		_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0f));
 	}
 
-	if (_inputManager.isKeyPressed(SDLK_z))
+	if (_inputManager.isKeyDown(SDLK_z))
 	{
 		_camera.setScale(_camera.getScale() + SCALE_SPEED);
 	}
 
-	if (_inputManager.isKeyPressed(SDLK_x))
+	if (_inputManager.isKeyDown(SDLK_x))
 	{
 		_camera.setScale(_camera.getScale() - SCALE_SPEED);
 	}
 
-	if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT))
+	if (_inputManager.isKeyDown(SDL_BUTTON_LEFT))
 	{
 		glm::vec2 mouseCoords = _inputManager.getMouseCoords();
 		mouseCoords = _camera.convertScreenToWorld(mouseCoords);
@@ -188,25 +188,21 @@ void MainGame::drawGame()
 
 	glActiveTexture(GL_TEXTURE0);
 
-	GLint textureLocation = _colorProgram.getUniformLocation("playerSampler");
-	glUniform1i(textureLocation, 0);
+	GLint textureLocation = _colorProgram.getUniformLocation( "playerSampler" );
+	glUniform1i( textureLocation, 0 );
 
 	// Set the camera matrix
-	GLint pLocation = _colorProgram.getUniformLocation("P");
+	GLint pLocation = _colorProgram.getUniformLocation( "P" );
 	glm::mat4 cameraMatrix = _camera.getCameraMatrix();
 
-	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
+	glUniformMatrix4fv( pLocation, 1, GL_FALSE, &( cameraMatrix[ 0 ][ 0 ] ) );
 
 	_spriteBatch.begin();
 
 	glm::vec4 pos(0.0f, 0.0f, 50.0f, 50.0f);
 	glm::vec4 uv(0.0f, 0.0f, 1.0f, 1.0f);
 	static Bengine::GLTexture texture = Bengine::ResourceManager::getTexture("Textures/PNG/CharacterRight_Standing.png");
-	Bengine::Color color;
-	color.r = 255;
-	color.g = 255;
-	color.b = 255;
-	color.a = 255;
+	Bengine::ColorRGBA8 color( 255, 255, 255, 255 );
 
 	_spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
 

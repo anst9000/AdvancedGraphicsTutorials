@@ -10,6 +10,14 @@ namespace Bengine
 	{
 	}
 
+	void InputManager::update()
+	{
+		for ( auto& it : _keyMap )
+		{
+			_previousKeyMap[ it.first ] = it.second;
+		}
+	}
+
 	void Bengine::InputManager::pressKey(unsigned int keyID)
 	{
 		_keyMap[keyID] = true;
@@ -26,7 +34,7 @@ namespace Bengine
 		_mouseCoords.y = y;
 	}
 
-	bool InputManager::isKeyPressed(unsigned int keyID)
+	bool InputManager::isKeyDown(unsigned int keyID)
 	{
 		auto it = _keyMap.find(keyID);
 
@@ -40,4 +48,27 @@ namespace Bengine
 		}
 	}
 
+	bool InputManager::isKeyPressed( unsigned int keyID )
+	{
+		if ( isKeyDown( keyID ) && !wasKeyDown( keyID ) )
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	bool InputManager::wasKeyDown( unsigned int keyID )
+	{
+		auto it = _previousKeyMap.find( keyID );
+
+		if ( it != _previousKeyMap.end() )
+		{
+			return it->second;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }

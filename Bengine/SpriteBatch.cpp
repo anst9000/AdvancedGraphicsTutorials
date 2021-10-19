@@ -36,7 +36,7 @@ namespace Bengine
 		createRenderBatches();
 	}
 
-	void SpriteBatch::draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, Color& color)
+	void SpriteBatch::draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, Bengine::ColorRGBA8& color)
 	{
 		Glyph* glyph = new Glyph;
 

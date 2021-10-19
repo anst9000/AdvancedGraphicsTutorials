@@ -41,13 +41,8 @@ Level::Level(const std::string& fileName) :
 	_spriteBatch.begin();
 
 	glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
-	Bengine::Color whiteColor;
-	whiteColor.setColor(255, 255, 255, 255);
-	//whiteColor.r = 255;
-	//whiteColor.g = 255;
-	//whiteColor.b = 255;
-	//whiteColor.a = 255;
-
+	Bengine::ColorRGBA8 whiteColor( 255, 255, 255, 255 );
+	
 	GLuint redBricks = Bengine::ResourceManager::getTexture("Textures/red_bricks.png").id;
 	GLuint lightBricks = Bengine::ResourceManager::getTexture("Textures/light_bricks.png").id;
 	GLuint glass = Bengine::ResourceManager::getTexture("Textures/glass.png").id;

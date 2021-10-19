@@ -51,7 +51,7 @@ namespace Bengine
 		void begin(GlyphSortType sortType = GlyphSortType::TEXTURE);
 		void end();
 
-		void draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, Color& color);
+		void draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, Bengine::ColorRGBA8& color);
 		void render();
 
 	private:
