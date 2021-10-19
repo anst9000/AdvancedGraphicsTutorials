@@ -11,6 +11,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bengine", "Bengine\Bengine.vcxproj", "{E90DCBC2-1DE8-424F-91E0-F136FBF5BC44}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZombieGame", "ZombieGame\ZombieGame.vcxproj", "{086422D8-11A6-42D0-9B61-9550C46F1BDE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E90DCBC2-1DE8-424F-91E0-F136FBF5BC44} = {E90DCBC2-1DE8-424F-91E0-F136FBF5BC44}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -62,7 +62,7 @@ namespace Bengine
 		_glyphs.push_back(glyph);
 	}
 
-	void SpriteBatch::renderBatch()
+	void SpriteBatch::render()
 	{
 		glBindVertexArray(_vao);
 

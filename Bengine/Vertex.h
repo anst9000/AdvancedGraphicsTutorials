@@ -16,6 +16,14 @@ namespace Bengine
 		GLubyte g;
 		GLubyte b;
 		GLubyte a;
+
+		void setColor(GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha)
+		{
+			r = red;
+			g = green;
+			b = blue;
+			a = alpha;
+		}
 	};
 
 	struct UV

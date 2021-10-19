@@ -1,0 +1,148 @@
+#include "Agent.h"
+#include <Bengine/ResourceManager.h>
+#include "Level.h"
+
+#include <cmath>
+#include <algorithm>
+
+Agent::Agent()
+{
+}
+
+Agent::~Agent()
+{
+}
+
+bool Agent::collideWithLevel(const std::vector<std::string>& levelData)
+{
+	std::vector<glm::vec2> collideTilePositions;
+
+	// Check the four corners
+	// First corner
+	checkTilePosition(levelData, collideTilePositions, _position.x, _position.y);
+
+	// Second corner
+	checkTilePosition(levelData, collideTilePositions, _position.x + AGENT_WIDTH, _position.y);
+	
+	// Third corner
+	checkTilePosition(levelData, collideTilePositions, _position.x, _position.y + AGENT_WIDTH);
+	
+	// Fourth corner
+	checkTilePosition(levelData, collideTilePositions, _position.x + AGENT_WIDTH, _position.y + AGENT_WIDTH);
+
+	if ( collideTilePositions.empty() )
+	{
+		return false;
+	}
+
+	for ( auto tilePos : collideTilePositions )
+	{
+		collideWithTile( tilePos );
+	}
+
+	return true;
+}
+
+bool Agent::collideWithAgent( Agent* agent )
+{
+	const float MIN_DISTANCE = AGENT_RADIUS * 2.0f;
+
+	glm::vec2 centerPosA = _position + glm::vec2( AGENT_RADIUS );
+	glm::vec2 centerPosB = agent->getPosition() + glm::vec2( AGENT_RADIUS );
+
+	glm::vec2 distVec = centerPosA - centerPosB;
+
+	float distance = glm::length( distVec );
+	float collisionDepth = MIN_DISTANCE - distance;
+
+	// We have a collision
+	if ( collisionDepth > 0.0f )
+	{
+		glm::vec2 collisionDepthVec = glm::normalize( distVec ) * collisionDepth;
+
+		_position += collisionDepthVec / 2.0f;
+		agent->_position -= collisionDepthVec / 2.0f;
+		return true;
+	}
+
+	return false;
+}
+
+void Agent::draw(Bengine::SpriteBatch& spriteBatch)
+{
+	glm::vec4 destRect;
+	destRect.x = _position.x;
+	destRect.y = _position.y;
+	destRect.z = AGENT_WIDTH;
+	destRect.w = AGENT_WIDTH;
+
+	const glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
+
+	//GLuint textureID = Bengine::ResourceManager::getTexture("Textures/red_bricks.png").id;
+	static int textureID = Bengine::ResourceManager::getTexture( "Textures/circle.png" ).id;
+
+	spriteBatch.draw(destRect, uvRect, textureID, 0.0f, _color);
+}
+
+bool Agent::applyDamage( float damage )
+{
+	_health -= damage;
+
+	return _health <= 0.0f;
+}
+
+void Agent::checkTilePosition( const std::vector<std::string>& levelData, std::vector<glm::vec2>& collideTilePositions, float x, float y )
+{
+	glm::vec2 cornerPos = glm::vec2(
+		std::floor( x / (float)( TILE_WIDTH ) ),
+		std::floor( y / (float)( TILE_WIDTH ) ) );
+
+	// If we are outside the world just return
+	if ( cornerPos.x < 0 || cornerPos.x > levelData[0].size() || cornerPos.y < 0 || cornerPos.y > levelData.size() )
+	{
+		return;
+	}
+
+	if ( levelData[ cornerPos.y ][ cornerPos.x ] != '.' )
+	{
+		collideTilePositions.push_back( cornerPos * (float)TILE_WIDTH + glm::vec2( (float)TILE_WIDTH / 2.0f ) );
+	}
+}
+
+// Access Aligned Bounding Box - Collision (= AABB)
+void Agent::collideWithTile( glm::vec2 tilePos )
+{
+	const float MIN_DISTANCE = AGENT_RADIUS + TILE_RADIUS;
+
+	glm::vec2 centerPlayerPos = _position + glm::vec2( AGENT_RADIUS );
+	glm::vec2 distVec = centerPlayerPos - tilePos;
+
+	float xDepth = MIN_DISTANCE - std::abs( distVec.x );
+	float yDepth = MIN_DISTANCE - std::abs( distVec.y );
+
+	if ( xDepth > 0.0f && yDepth > 0.0f )
+	{
+		if ( std::max( xDepth, 0.0f ) < std::max( yDepth, 0.0f ) )
+		{
+			if ( distVec.x < 0.0f )
+			{
+				_position.x -= xDepth;
+			}
+			else
+			{
+				_position.x += xDepth;
+			}
+		}
+		else
+		{
+			if ( distVec.y < 0.0f )
+			{
+				_position.y -= yDepth;
+			}
+			else
+			{
+				_position.y += yDepth;
+			}
+		}
+	}
+}

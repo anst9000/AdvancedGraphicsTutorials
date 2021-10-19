@@ -142,11 +142,57 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Agent.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Gun.h" />
+    <ClInclude Include="Human.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Agent.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Gun.cpp" />
+    <ClCompile Include="Human.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Zombie.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Fonts\chintzy.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Levels\level1.txt" />
+    <Text Include="Levels\level2.txt" />
+    <Text Include="Levels\level3.txt" />
+    <Text Include="Sound\credits.txt" />
+    <Text Include="Sound\shots\info.txt" />
+    <Text Include="Textures\credits.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\circle.png" />
+    <Image Include="Textures\glass.png" />
+    <Image Include="Textures\human.png" />
+    <Image Include="Textures\light_bricks.png" />
+    <Image Include="Textures\particle.png" />
+    <Image Include="Textures\player.png" />
+    <Image Include="Textures\red_bricks.png" />
+    <Image Include="Textures\zombie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\textureShading.frag" />
+    <None Include="Shaders\textureShading.vert" />
+    <None Include="Sound\XYZ.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Sound\shots\cg1.wav" />
+    <Media Include="Sound\shots\pistol.wav" />
+    <Media Include="Sound\shots\rifle.wav" />
+    <Media Include="Sound\shots\shotgun.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

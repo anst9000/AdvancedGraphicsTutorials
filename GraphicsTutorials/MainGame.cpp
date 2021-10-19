@@ -216,7 +216,7 @@ void MainGame::drawGame()
 	}
 
 	_spriteBatch.end();
-	_spriteBatch.renderBatch();
+	_spriteBatch.render();
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 

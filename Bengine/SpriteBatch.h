@@ -52,7 +52,7 @@ namespace Bengine
 		void end();
 
 		void draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, Color& color);
-		void renderBatch();
+		void render();
 
 	private:
 		void createRenderBatches();

@@ -13,9 +13,48 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\Fonts">
+      <UniqueIdentifier>{6ba32745-6bb8-414a-a373-eaee83a72577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Levels">
+      <UniqueIdentifier>{3f890b05-1457-4e66-aec7-0fa97d1f06a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders">
+      <UniqueIdentifier>{01d05819-960c-4d91-b40e-045644cfdb27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Sound">
+      <UniqueIdentifier>{4f18fac2-2073-44f5-8d7f-ebb190086598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures">
+      <UniqueIdentifier>{07503a4c-cd8b-4d93-8afc-99657e67ed39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Sound\shots">
+      <UniqueIdentifier>{fe840889-18c6-4ad6-a840-6dbc339fcb61}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Agent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Human.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gun.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -26,5 +65,102 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Agent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Human.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gun.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Fonts\chintzy.ttf">
+      <Filter>Resource Files\Fonts</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Levels\level1.txt">
+      <Filter>Resource Files\Levels</Filter>
+    </Text>
+    <Text Include="Textures\credits.txt">
+      <Filter>Resource Files\Textures</Filter>
+    </Text>
+    <Text Include="Sound\credits.txt">
+      <Filter>Resource Files\Sound</Filter>
+    </Text>
+    <Text Include="Sound\shots\info.txt">
+      <Filter>Resource Files\Sound\shots</Filter>
+    </Text>
+    <Text Include="Levels\level2.txt">
+      <Filter>Resource Files\Levels</Filter>
+    </Text>
+    <Text Include="Levels\level3.txt">
+      <Filter>Resource Files\Levels</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\circle.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Textures\glass.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Textures\human.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Textures\light_bricks.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Textures\particle.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Textures\player.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Textures\red_bricks.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Textures\zombie.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sound\XYZ.ogg">
+      <Filter>Resource Files\Sound</Filter>
+    </None>
+    <None Include="Shaders\textureShading.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\textureShading.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Sound\shots\cg1.wav">
+      <Filter>Resource Files\Sound\shots</Filter>
+    </Media>
+    <Media Include="Sound\shots\pistol.wav">
+      <Filter>Resource Files\Sound\shots</Filter>
+    </Media>
+    <Media Include="Sound\shots\rifle.wav">
+      <Filter>Resource Files\Sound\shots</Filter>
+    </Media>
+    <Media Include="Sound\shots\shotgun.wav">
+      <Filter>Resource Files\Sound\shots</Filter>
+    </Media>
   </ItemGroup>
 </Project>
