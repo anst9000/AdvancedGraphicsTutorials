@@ -60,4 +60,31 @@ namespace Bengine
 		return screenCoords;
 	}
 
+	// Simple AABB test to see if a box is in the camera view
+	bool Camera2D::isBoxInView( const glm::vec2& position, const glm::vec2& dimensions )
+	{
+		glm::vec2 scaledScreenDimensions = glm::vec2( _screenWidth, _screenHeight ) / _scale;
+
+		const float MIN_DISTANCE_X = dimensions.x / 2.0f + scaledScreenDimensions.x / 2.0f;
+		const float MIN_DISTANCE_Y = dimensions.y / 2.0f + scaledScreenDimensions.y / 2.0f;
+
+		// Center position of the parameters
+		glm::vec2 centerPos = position + dimensions / 2.0f;
+		// Center position of the camera
+		glm::vec2 centerCameraPos = _position;
+		// Vector from the input to the camera
+		glm::vec2 distVec = centerPos - centerCameraPos;
+
+		float xDepth = MIN_DISTANCE_X - std::abs( distVec.x );
+		float yDepth = MIN_DISTANCE_Y - std::abs( distVec.y );
+
+		if ( xDepth > 0.0f && yDepth > 0.0f )
+		{
+			// There was a collision
+			return true;
+		}
+
+		return false;
+	}
+
 }

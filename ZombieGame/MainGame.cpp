@@ -402,9 +402,23 @@ void MainGame::drawGame()
 	// Begin drawing agents
 	_agentSpriteBatch.begin();
 
+	const glm::vec2 agentDims( AGENT_RADIUS * 2.0f );
+
 	// Draw all humans & zombies
-	std::for_each( _humans.begin(), _humans.end(), [&]( Human* h ) { h->draw( _agentSpriteBatch ); } );
-	std::for_each( _zombies.begin(), _zombies.end(), [&]( Zombie* z ) { z->draw( _agentSpriteBatch ); } );
+	std::for_each( _humans.begin(), _humans.end(), [&]( Human* h )
+		{
+			if ( _camera.isBoxInView(h->getPosition(), agentDims ) )
+			{
+				h->draw( _agentSpriteBatch );
+			}		
+		} );
+	std::for_each( _zombies.begin(), _zombies.end(), [&]( Zombie* z )
+		{
+			if ( _camera.isBoxInView( z->getPosition(), agentDims ) )
+			{
+				z->draw( _agentSpriteBatch );
+			}
+		} );
 
 	// Draw the bullets
 	std::for_each( _bullets.begin(), _bullets.end(), [&]( Bullet b ) { b.draw( _agentSpriteBatch ); } );

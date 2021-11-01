@@ -169,6 +169,7 @@
     <Font Include="Fonts\chintzy.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="level4.txt" />
     <Text Include="Levels\level1.txt" />
     <Text Include="Levels\level2.txt" />
     <Text Include="Levels\level3.txt" />

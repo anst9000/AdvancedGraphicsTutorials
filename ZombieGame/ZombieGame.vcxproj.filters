@@ -111,6 +111,9 @@
     <Text Include="Levels\level3.txt">
       <Filter>Resource Files\Levels</Filter>
     </Text>
+    <Text Include="level4.txt">
+      <Filter>Resource Files\Levels</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\circle.png">
