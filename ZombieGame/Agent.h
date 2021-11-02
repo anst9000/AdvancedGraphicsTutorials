@@ -33,17 +33,17 @@ public:
 	// Return true if agent dies
 	bool applyDamage( float damage );
 
-	glm::vec2 getPosition() const { return _position; }
+	glm::vec2 getPosition() const { return m_position; }
 
 protected:
 	void checkTilePosition(const std::vector<std::string>& levelData, std::vector<glm::vec2>& collideTilePositions, float x, float y);
 
 	void collideWithTile( glm::vec2 tilePos );
 
-	glm::vec2 _position;
-	float _speed;
-	float _health;
+	glm::vec2 m_position;
+	float m_speed;
+	float m_health;
 	
-	Bengine::ColorRGBA8 _color;
+	Bengine::ColorRGBA8 m_color;
 };
 

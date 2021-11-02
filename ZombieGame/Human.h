@@ -19,8 +19,8 @@ public:
 		float deltaTime) override;
 
 private:
-	glm::vec2 _direction;
+	glm::vec2 m_direction;
 
-	int _frames;
+	int m_frames = 0;
 };
 

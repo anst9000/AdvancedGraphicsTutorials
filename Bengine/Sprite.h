@@ -16,13 +16,13 @@ namespace Bengine
 		void draw();
 
 	private:
-		int _x;
-		int _y;
-		int _width;
-		int _height;
+		int m_x = 0;
+		int m_y = 0;
+		int m_width = 0;
+		int m_height = 0;
 
-		GLuint _vboID;
+		GLuint m_vboID = 0;
 
-		GLTexture _texture;
+		GLTexture m_texture {};
 	};
 }

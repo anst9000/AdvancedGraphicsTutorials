@@ -8,84 +8,86 @@
 namespace Bengine
 {
 
-	GLSLProgram::GLSLProgram() : _numAttributes(0), _programID(0), _vertexShaderID(0), _fragmentShaderID(0)
+	GLSLProgram::GLSLProgram()
 	{
+		// Empty
 	}
 
 	GLSLProgram::~GLSLProgram()
 	{
+		// Empty
 	}
 
 	void GLSLProgram::compileShaders(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath)
 	{
 		// Vertex and fragment shaders are successfully compiled
 		// Link the together into a program, get a program object.
-		_programID = glCreateProgram();
+		m_programID = glCreateProgram();
 
-		_vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
-		if (_vertexShaderID == 0)
+		m_vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
+		if (m_vertexShaderID == 0)
 		{
 			fatalError("Vertex shader failed to be created.");
 		}
 
-		_fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
-		if (_fragmentShaderID == 0)
+		m_fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
+		if (m_fragmentShaderID == 0)
 		{
 			fatalError("Fragment shader failed to be created.");
 		}
 
-		compileShader(vertexShaderFilePath, _vertexShaderID);
-		compileShader(fragmentShaderFilePath, _fragmentShaderID);
+		compileShader(vertexShaderFilePath, m_vertexShaderID);
+		compileShader(fragmentShaderFilePath, m_fragmentShaderID);
 	}
 
 	void GLSLProgram::linkShaders()
 	{
 		// Attach our shaders to our program
-		glAttachShader(_programID, _vertexShaderID);
-		glAttachShader(_programID, _fragmentShaderID);
+		glAttachShader(m_programID, m_vertexShaderID);
+		glAttachShader(m_programID, m_fragmentShaderID);
 
 		// Link our program
-		glLinkProgram(_programID);
+		glLinkProgram(m_programID);
 
 		// Note the different functions here: glGetProgram* instead of glGetShader*
 		GLint isLinked = 0;
-		glGetProgramiv(_programID, GL_LINK_STATUS, (int*)&isLinked);
+		glGetProgramiv(m_programID, GL_LINK_STATUS, (int*)&isLinked);
 		if (isLinked == GL_FALSE)
 		{
 			GLint maxLength = 0;
-			glGetProgramiv(_programID, GL_INFO_LOG_LENGTH, &maxLength);
+			glGetProgramiv(m_programID, GL_INFO_LOG_LENGTH, &maxLength);
 
 			// The maxLength includes the NULL character
 			std::vector<GLchar> errorLog(maxLength);
-			glGetProgramInfoLog(_programID, maxLength, &maxLength, &errorLog[0]);
+			glGetProgramInfoLog(m_programID, maxLength, &maxLength, &errorLog[0]);
 
 			// We don't need the program anymore
-			glDeleteProgram(_programID);
+			glDeleteProgram(m_programID);
 			// Don't leak shaders either
-			glDeleteShader(_vertexShaderID);
-			glDeleteShader(_fragmentShaderID);
+			glDeleteShader(m_vertexShaderID);
+			glDeleteShader(m_fragmentShaderID);
 
 			std::printf("%s\n", &(errorLog[0]));
 			fatalError("Shaders failed to link");
 		}
 
 		// Always detach shaders after a successful link.
-		glDetachShader(_programID, _vertexShaderID);
-		glDetachShader(_programID, _fragmentShaderID);
+		glDetachShader(m_programID, m_vertexShaderID);
+		glDetachShader(m_programID, m_fragmentShaderID);
 
-		glDeleteShader(_vertexShaderID);
-		glDeleteShader(_fragmentShaderID);
+		glDeleteShader(m_vertexShaderID);
+		glDeleteShader(m_fragmentShaderID);
 	}
 
 	// Adds an attribute to our shader. Should be called between compiling and linking.
 	void GLSLProgram::addAttribute(const std::string& attributeName)
 	{
-		glBindAttribLocation(_programID, _numAttributes++, attributeName.c_str());
+		glBindAttribLocation(m_programID, m_numAttributes++, attributeName.c_str());
 	}
 
 	GLint GLSLProgram::getUniformLocation(const std::string uniformName)
 	{
-		GLint location = glGetUniformLocation(_programID, uniformName.c_str());
+		GLint location = glGetUniformLocation(m_programID, uniformName.c_str());
 
 		if (location == GL_INVALID_INDEX)
 		{
@@ -98,9 +100,9 @@ namespace Bengine
 	// Enable the shader, and all its attributes
 	void GLSLProgram::use()
 	{
-		glUseProgram(_programID);
+		glUseProgram(m_programID);
 
-		for (int i = 0; i < _numAttributes; i++)
+		for (int i = 0; i < m_numAttributes; i++)
 		{
 			glEnableVertexAttribArray(i);
 		}
@@ -111,7 +113,7 @@ namespace Bengine
 	{
 		glUseProgram(0);
 
-		for (int i = 0; i < _numAttributes; i++)
+		for (int i = 0; i < m_numAttributes; i++)
 		{
 			glDisableVertexAttribArray(i);
 		}

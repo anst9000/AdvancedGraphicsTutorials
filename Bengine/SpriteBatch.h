@@ -80,7 +80,7 @@ namespace Bengine {
         // Generates our VAO and VBO
         void createVertexArray();
 
-        // Sorts glyphs according to _sortType
+        // Sorts glyphs according to m_sortType
         void sortGlyphs();
 
         // Comparators used by sortGlyphs()
@@ -88,14 +88,14 @@ namespace Bengine {
         static bool compareBackToFront( Glyph* a, Glyph* b );
         static bool compareTexture( Glyph* a, Glyph* b );
 
-        GLuint _vbo;
-        GLuint _vao;
+        GLuint m_vbo = 0;
+        GLuint m_vao = 0;
 
-        GlyphSortType _sortType;
+        GlyphSortType m_sortType;
 
-        std::vector<Glyph*> _glyphPointers; ///< This is for sorting
-        std::vector<Glyph> _glyphs; ///< These are the actual glyphs
-        std::vector<RenderBatch> _renderBatches;
+        std::vector<Glyph*> m_glyphPointers;            ///< This is for sorting
+        std::vector<Glyph> m_glyphs;                    ///< These are the actual glyphs
+        std::vector<RenderBatch> m_renderBatches;
     };
 
 }

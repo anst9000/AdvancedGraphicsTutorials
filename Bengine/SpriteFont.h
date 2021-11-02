@@ -66,7 +66,7 @@ namespace Bengine {
         void dispose();
 
         int getFontHeight() const {
-            return _fontHeight;
+            return m_fontHeight;
         }
 
         /// Measures the dimensions of the text
@@ -78,11 +78,12 @@ namespace Bengine {
     private:
         static std::vector<int>* createRows(glm::ivec4* rects, int rectsLength, int r, int padding, int& w);
 
-        int _regStart, _regLength;
-        CharGlyph* _glyphs;
-        int _fontHeight;
+        int m_regStart = 0;
+        int m_regLength = 0;
+        CharGlyph* m_glyphs = NULL;
+        int m_fontHeight = 0;
 
-        unsigned int _texID;
+        unsigned int m_texID = 0;
     };
 
 }

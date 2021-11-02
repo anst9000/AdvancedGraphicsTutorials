@@ -25,14 +25,14 @@ public:
 
 	bool collideWithAgent( Agent* agent );
 
-	float getDamage() const { return _damage; }
+	float getDamage() const { return m_damage; }
 
 private:
 	bool collideWithLevel( const std::vector<std::string>& levelData );
 
-	glm::vec2 _position;
-	glm::vec2 _direction;
+	glm::vec2 m_position;
+	glm::vec2 m_direction;
 
-	float _damage;
-	float _speed;
+	float m_damage;
+	float m_speed;
 };

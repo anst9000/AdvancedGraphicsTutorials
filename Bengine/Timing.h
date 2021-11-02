@@ -19,10 +19,10 @@ namespace Bengine
 	private:
 		void calculatFPS();
 
-		float _fps;
-		float _maxFPS;
-		float _frameTime;
+		float m_fps = 0.0f;
+		float m_maxFPS = 0.0f;
+		float m_frameTime = 0.0f;
 
-		unsigned int _startTicks;
+		unsigned int m_startTicks = 0;
 	};
 }

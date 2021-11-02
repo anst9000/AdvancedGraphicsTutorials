@@ -68,32 +68,32 @@ private:
 	void drawHud();
 
 	///  Member variables
-	Bengine::Window _window;					///< The game window
-	Bengine::GLSLProgram _textureProgram;		///< The shader program
-	Bengine::InputManager _inputManager;		///< Handles input
-	Bengine::Camera2D _camera;					///< Main camera
-	Bengine::Camera2D _hudCamera;				///< Hud camera
-	Bengine::SpriteBatch _agentSpriteBatch;		///< Draws all agents
-	Bengine::SpriteBatch _hudSpriteBatch;		///< Draws
+	Bengine::Window m_window;					///< The game window
+	Bengine::GLSLProgram m_textureProgram;		///< The shader program
+	Bengine::InputManager m_inputManager;		///< Handles input
+	Bengine::Camera2D m_camera;					///< Main camera
+	Bengine::Camera2D m_hudCamera;				///< Hud camera
+	Bengine::SpriteBatch m_agentSpriteBatch;	///< Draws all agents
+	Bengine::SpriteBatch m_hudSpriteBatch;		///< Draws
 
-	Level* _level;								///< Pointer to loaded level
+	Level* m_level = NULL;						///< Pointer to loaded level
 
-	int _screenWidth;
-	int _screenHeight;
-	float _fps;
+	int m_screenWidth = 920;
+	int m_screenHeight = 690;
+	float m_fps = 0.0f;
 
-	std::vector<Human*> _humans;				///< Vector of all humans
-	std::vector<Zombie*> _zombies;				///< Vector of all zombies
-	std::vector<Bullet> _bullets;				///< Vector of all bullets
-	Player* _player;							///< Pointer to the player
+	std::vector<Human*> m_humans;				///< Vector of all humans
+	std::vector<Zombie*> m_zombies;				///< Vector of all zombies
+	std::vector<Bullet> m_bullets;				///< Vector of all bullets
+	Player* m_player = NULL;						///< Pointer to the player
 
-	int _currentLevel;
+	int m_currentLevel = 0;
 
-	int _numHumansKilled;						///< Humans killed by player
-	int _numZombiesKilled;						///< Zombies killed by player
+	int m_numHumansKilled = 0;					///< Humans killed by player
+	int m_numZombiesKilled = 0;					///< Zombies killed by player
 
-	Bengine::SpriteFont* _spriteFont;			///< Pointer to the SpriteFont
+	Bengine::SpriteFont* m_spriteFont = NULL;	///< Pointer to the SpriteFont
 
-	GameState _gameState;
+	GameState m_gameState = GameState::PLAY;
 };
 

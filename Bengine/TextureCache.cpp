@@ -16,16 +16,16 @@ namespace Bengine
 	GLTexture TextureCache::getTexture(std::string texturePath)
 	{
 		// Lookup the texture and see if its in the map
-		auto mit = _textureMap.find(texturePath);
+		auto mit = m_textureMap.find(texturePath);
 
 		// Check if its not int the map
-		if (mit == _textureMap.end())
+		if (mit == m_textureMap.end())
 		{
 			GLTexture newTexture = ImageLoader::loadPNG(texturePath);
 
 			//std::pair<std::string, GLTexture> newPair(texturePath, newTexture);
-			//_textureMap.insert(newPair);
-			_textureMap.insert(std::make_pair(texturePath, newTexture));
+			//m_textureMap.insert(newPair);
+			m_textureMap.insert(std::make_pair(texturePath, newTexture));
 
 			//std::cout << "Loaded Texture.\n";
 

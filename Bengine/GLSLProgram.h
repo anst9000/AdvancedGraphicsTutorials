@@ -24,10 +24,10 @@ namespace Bengine
 	private:
 		void compileShader(const std::string& filePath, GLuint id);
 
-		int _numAttributes;
-		GLuint _programID;
+		int m_numAttributes = 0;
+		GLuint m_programID = 0;
 
-		GLuint _vertexShaderID;
-		GLuint _fragmentShaderID;
+		GLuint m_vertexShaderID = 0;
+		GLuint m_fragmentShaderID = 0;
 	};
 }

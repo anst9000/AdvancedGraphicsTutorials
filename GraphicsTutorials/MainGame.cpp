@@ -7,18 +7,18 @@
 #include <string>
 
 MainGame::MainGame() :
-	_screenWidth(950),
-	_screenHeight(650),
-	_gameState(GameState::PLAY),
+	m_screenWidth(950),
+	m_screenHeight(650),
+	m_gameState(GameState::PLAY),
 	_time(0.0f),
-	_fps(0.0f),
-	_bullets(),
-	_maxFPS(60.0f),
+	m_fps(0.0f),
+	m_bullets(),
+	m_maxFPS(60.0f),
 	_spriteBatch(),
-	_inputManager(),
+	m_inputManager(),
 	_fpsLimiter()
 {
-	_camera.init(_screenWidth, _screenHeight);
+	m_camera.init(m_screenWidth, m_screenHeight);
 }
 
 MainGame::~MainGame()
@@ -39,12 +39,12 @@ void MainGame::initSystems()
 {
 	Bengine::init();
 
-	_window.create("Game Engine", _screenWidth, _screenHeight, 0);
+	m_window.create("Game Engine", m_screenWidth, m_screenHeight, 0);
 
 	initShaders();
 
 	_spriteBatch.init();
-	_fpsLimiter.init(_maxFPS);
+	_fpsLimiter.init(m_maxFPS);
 }
 
 void MainGame::initShaders()
@@ -59,22 +59,22 @@ void MainGame::initShaders()
 void MainGame::gameLoop()
 {
 	// Will loop until we set _gameState to EXIT
-	while (_gameState != GameState::EXIT)
+	while (m_gameState != GameState::EXIT)
 	{
 		_fpsLimiter.begin();
 
 		processInput();
 		_time += 0.01;
 
-		_camera.update();
+		m_camera.update();
 
-		for (int i = 0; i < _bullets.size();)
+		for (int i = 0; i < m_bullets.size();)
 		{
 			// Update all bullets
-			if (_bullets[i].update())
+			if (m_bullets[i].update())
 			{
-				_bullets[i] = _bullets.back();
-				_bullets.pop_back();
+				m_bullets[i] = m_bullets.back();
+				m_bullets.pop_back();
 			}
 			else
 			{
@@ -84,7 +84,7 @@ void MainGame::gameLoop()
 
 		drawGame();
 
-		_fps = _fpsLimiter.end();
+		m_fps = _fpsLimiter.end();
 
 		// Print only once every 10th frame
 		static int frameCounter = 0;
@@ -92,7 +92,7 @@ void MainGame::gameLoop()
 
 		if (frameCounter == 10000)
 		{
-			std::cout << _fps << std::endl;
+			std::cout << m_fps << std::endl;
 			frameCounter = 0;
 		}
 	}
@@ -113,66 +113,66 @@ void MainGame::processInput()
 		switch (evnt.type)
 		{
 			case SDL_QUIT:
-				_gameState = GameState::EXIT;
+				m_gameState = GameState::EXIT;
 				break;
 			case SDL_KEYDOWN:
-				_inputManager.pressKey(evnt.key.keysym.sym);
+				m_inputManager.pressKey(evnt.key.keysym.sym);
 				break;
 			case SDL_KEYUP:
-				_inputManager.releaseKey(evnt.key.keysym.sym);
+				m_inputManager.releaseKey(evnt.key.keysym.sym);
 				break;
 			case SDL_MOUSEBUTTONDOWN:
-				_inputManager.pressKey(evnt.button.button);
+				m_inputManager.pressKey(evnt.button.button);
 				break;
 			case SDL_MOUSEBUTTONUP:
-				_inputManager.releaseKey(evnt.button.button);
+				m_inputManager.releaseKey(evnt.button.button);
 				break;
 			case SDL_MOUSEMOTION:
-				_inputManager.setMouseCoords(evnt.motion.x, evnt.motion.y);
+				m_inputManager.setMouseCoords(evnt.motion.x, evnt.motion.y);
 				break;
 		}
 	}
 
-	if (_inputManager.isKeyDown(SDLK_UP))
+	if (m_inputManager.isKeyDown(SDLK_UP))
 	{
-		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, CAMERA_SPEED));
+		m_camera.setPosition(m_camera.getPosition() + glm::vec2(0.0f, CAMERA_SPEED));
 	}
 
-	if (_inputManager.isKeyDown(SDLK_DOWN))
+	if (m_inputManager.isKeyDown(SDLK_DOWN))
 	{
-		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, -CAMERA_SPEED));
+		m_camera.setPosition(m_camera.getPosition() + glm::vec2(0.0f, -CAMERA_SPEED));
 	}
 
-	if (_inputManager.isKeyDown(SDLK_LEFT))
+	if (m_inputManager.isKeyDown(SDLK_LEFT))
 	{
-		_camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0f));
+		m_camera.setPosition(m_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0f));
 	}
 
-	if (_inputManager.isKeyDown(SDLK_RIGHT))
+	if (m_inputManager.isKeyDown(SDLK_RIGHT))
 	{
-		_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0f));
+		m_camera.setPosition(m_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0f));
 	}
 
-	if (_inputManager.isKeyDown(SDLK_z))
+	if (m_inputManager.isKeyDown(SDLK_z))
 	{
-		_camera.setScale(_camera.getScale() + SCALE_SPEED);
+		m_camera.setScale(m_camera.getScale() + SCALE_SPEED);
 	}
 
-	if (_inputManager.isKeyDown(SDLK_x))
+	if (m_inputManager.isKeyDown(SDLK_x))
 	{
-		_camera.setScale(_camera.getScale() - SCALE_SPEED);
+		m_camera.setScale(m_camera.getScale() - SCALE_SPEED);
 	}
 
-	if (_inputManager.isKeyDown(SDL_BUTTON_LEFT))
+	if (m_inputManager.isKeyDown(SDL_BUTTON_LEFT))
 	{
-		glm::vec2 mouseCoords = _inputManager.getMouseCoords();
-		mouseCoords = _camera.convertScreenToWorld(mouseCoords);
+		glm::vec2 mouseCoords = m_inputManager.getMouseCoords();
+		mouseCoords = m_camera.convertScreenToWorld(mouseCoords);
 
 		glm::vec2 playerPosition(0.0f);
 		glm::vec2 direction = mouseCoords - playerPosition;
 		direction = glm::normalize(direction);
 
-		_bullets.emplace_back(playerPosition, direction, 5.0f, 1000);
+		m_bullets.emplace_back(playerPosition, direction, 5.0f, 1000);
 	}
 
 }
@@ -193,7 +193,7 @@ void MainGame::drawGame()
 
 	// Set the camera matrix
 	GLint pLocation = _colorProgram.getUniformLocation( "P" );
-	glm::mat4 cameraMatrix = _camera.getCameraMatrix();
+	glm::mat4 cameraMatrix = m_camera.getCameraMatrix();
 
 	glUniformMatrix4fv( pLocation, 1, GL_FALSE, &( cameraMatrix[ 0 ][ 0 ] ) );
 
@@ -206,9 +206,9 @@ void MainGame::drawGame()
 
 	_spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
 
-	for (int i = 0; i < _bullets.size(); i++)
+	for (int i = 0; i < m_bullets.size(); i++)
 	{
-		_bullets[i].draw(_spriteBatch);
+		m_bullets[i].draw(_spriteBatch);
 	}
 
 	_spriteBatch.end();
@@ -219,5 +219,5 @@ void MainGame::drawGame()
 	_colorProgram.unuse();
 
 	// Swap our buffer and draw everything to the screen
-	_window.swapBuffer();
+	m_window.swapBuffer();
 }
