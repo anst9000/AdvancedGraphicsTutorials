@@ -23,7 +23,7 @@ namespace Bengine
 		int getScreenHeight() { return m_screenHeight; }
 
 	private:
-		SDL_Window* _sdlWindow = NULL;
+		SDL_Window* m_sdlWindow = NULL;
 		int m_screenWidth = 0;
 		int m_screenHeight = 0;
 	};
