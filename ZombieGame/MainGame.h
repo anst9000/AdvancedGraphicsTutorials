@@ -1,11 +1,16 @@
 #pragma once
 
-#include <Bengine/Window.h>
+#include <Bengine/Bengine.h>
+#include <Bengine/Camera2D.h>
+#include <Bengine/Errors.h>
 #include <Bengine/GLSLProgram.h>
 #include <Bengine/InputManager.h>
-#include <Bengine/Camera2D.h>
 #include <Bengine/ResourceManager.h>
 #include <Bengine/SpriteBatch.h>
+#include <Bengine/SpriteFont.h>
+#include <Bengine/Timing.h>
+#include <Bengine/Window.h>
+
 
 #include "Player.h"
 #include "Level.h"
@@ -59,12 +64,17 @@ private:
 	/// Renders the game
 	void drawGame();
 
+	/// Draw the HUD
+	void drawHud();
+
 	///  Member variables
 	Bengine::Window _window;					///< The game window
 	Bengine::GLSLProgram _textureProgram;		///< The shader program
 	Bengine::InputManager _inputManager;		///< Handles input
 	Bengine::Camera2D _camera;					///< Main camera
+	Bengine::Camera2D _hudCamera;				///< Hud camera
 	Bengine::SpriteBatch _agentSpriteBatch;		///< Draws all agents
+	Bengine::SpriteBatch _hudSpriteBatch;		///< Draws
 
 	Level* _level;								///< Pointer to loaded level
 
@@ -81,6 +91,8 @@ private:
 
 	int _numHumansKilled;						///< Humans killed by player
 	int _numZombiesKilled;						///< Zombies killed by player
+
+	Bengine::SpriteFont* _spriteFont;			///< Pointer to the SpriteFont
 
 	GameState _gameState;
 };

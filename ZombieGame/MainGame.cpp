@@ -1,9 +1,6 @@
 #include "MainGame.h"
 
 #include <SDL/SDL.h>
-#include <Bengine/Bengine.h>
-#include <Bengine/Timing.h>
-#include <Bengine/Errors.h>
 
 #include "Zombie.h"
 #include "Gun.h"
@@ -59,9 +56,19 @@ void MainGame::initSystems()
 
 	initShaders();
 
+	// Initialize our spritebatches
 	_agentSpriteBatch.init();
+	_hudSpriteBatch.init();
 
-	_camera.init(_screenWidth, _screenHeight);
+	// Initialize sprite font
+	_spriteFont = new Bengine::SpriteFont( "Fonts/chintzy.ttf", 64 );
+
+	// Set up the camera
+	_camera.init( _screenWidth, _screenHeight );
+	_hudCamera.init(_screenWidth, _screenHeight);
+	std::cout << "width " << _screenWidth << " height " << _screenHeight << std::endl;
+	//_hudCamera.setPosition( glm::vec2( 0, 150 ) );
+	_hudCamera.setPosition( glm::vec2( _screenWidth / 5, _screenHeight / 2 ) );
 }
 
 void MainGame::initLevel()
@@ -168,6 +175,7 @@ void MainGame::gameLoop()
 
 		_camera.setPosition( _player->getPosition() );
 		_camera.update();
+		_hudCamera.update();
 
 		drawGame();
 
@@ -431,8 +439,48 @@ void MainGame::drawGame()
 	_agentSpriteBatch.end();
 	_agentSpriteBatch.render();
 
+	// Render the heads up display
+	drawHud();
+
 	_textureProgram.unuse();
 
 	// Swap our buffer and draw everything to the screen
 	_window.swapBuffer();
+}
+
+void MainGame::drawHud()
+{
+	char buffer[ 256 ];
+
+	glm::mat4 projectionMatrix = _hudCamera.getCameraMatrix();
+	GLint pUniform = _textureProgram.getUniformLocation( "P" );
+	glUniformMatrix4fv( pUniform, 1, GL_FALSE, &projectionMatrix[ 0 ][ 0 ] );
+
+	_hudSpriteBatch.begin();
+
+	sprintf_s( buffer, "Num Humans %d", _humans.size() );
+
+	_spriteFont->draw( 
+		_hudSpriteBatch, 
+		buffer, 
+		glm::vec2( 0, 0 ), 
+		glm::vec2( 0.5f ), 
+		0.0f,
+		Bengine::ColorRGBA8( 255, 255, 255, 255 ), 
+		Bengine::Justification::RIGHT
+	);
+
+	sprintf_s( buffer, "Num Zombies %d", _zombies.size() );
+
+	_spriteFont->draw(
+		_hudSpriteBatch,
+		buffer,
+		glm::vec2( 0, 36 ),
+		glm::vec2( 0.5f ),								/// Scaling of text
+		0.0f,
+		Bengine::ColorRGBA8( 255, 255, 255, 255 ),
+		Bengine::Justification::RIGHT
+	);
+	_hudSpriteBatch.end();
+	_hudSpriteBatch.render();
 }
