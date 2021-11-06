@@ -23,6 +23,6 @@ namespace Bengine
 
 		GLuint m_vboID = 0;
 
-		GLTexture m_texture {};
+		GLTexture m_texture { 0 };
 	};
 }

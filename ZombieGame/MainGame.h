@@ -11,6 +11,8 @@
 #include <Bengine/Timing.h>
 #include <Bengine/Window.h>
 #include <Bengine/AudioEngine.h>
+#include <Bengine/ParticleEngine2D.h>
+#include <Bengine/ParticleBatch2D.h>
 
 #include "Player.h"
 #include "Level.h"
@@ -67,6 +69,9 @@ private:
 	/// Draw the HUD
 	void drawHud();
 
+	/// Adds blooc to the particle engine
+	void addBlood( const glm::vec2& position, int numParticles );
+
 	///  Member variables
 	Bengine::Window m_window;					///< The game window
 	Bengine::GLSLProgram m_textureProgram;		///< The shader program
@@ -75,6 +80,9 @@ private:
 	Bengine::Camera2D m_hudCamera;				///< Hud camera
 	Bengine::SpriteBatch m_agentSpriteBatch;	///< Draws all agents
 	Bengine::SpriteBatch m_hudSpriteBatch;		///< Draws
+
+	Bengine::ParticleEngine2D m_particleEngine;	///< Draws all particles
+	Bengine::ParticleBatch2D* m_bloodParticleBatch;
 
 	Level* m_level = NULL;						///< Pointer to loaded level
 
