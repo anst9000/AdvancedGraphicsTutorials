@@ -1,5 +1,5 @@
 #include "Level.h"
-#include <Bengine/Errors.h>
+#include <Bengine/BengineErrors.h>
 #include <Bengine/ResourceManager.h>
 
 #include <fstream>

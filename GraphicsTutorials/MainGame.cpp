@@ -1,5 +1,5 @@
 #include "MainGame.h"
-#include <Bengine/Errors.h>
+#include <Bengine/BengineErrors.h>
 #include <Bengine/Bengine.h>
 #include <Bengine/ResourceManager.h>
 

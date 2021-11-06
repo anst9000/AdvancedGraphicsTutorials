@@ -5,14 +5,15 @@
 
 #include "Gun.h"
 
-Gun::Gun( std::string name, int fireRate, int bulletsPerShot, float spread, float bulletDamage, float bulletSpeed )
+Gun::Gun( std::string name, int fireRate, int bulletsPerShot, float spread, float bulletDamage, float bulletSpeed, Bengine::SoundEffect fireEffect )
 	:
 	m_name( name ),
 	m_fireRate( fireRate ),
 	m_bulletsPerShot( bulletsPerShot ),
 	m_spread( spread ),
 	m_bulletDamage( bulletDamage ),
-	m_bulletSpeed( bulletSpeed )
+	m_bulletSpeed( bulletSpeed ),
+	m_fireEffect( fireEffect )
 {
 }
 
@@ -35,6 +36,8 @@ void Gun::fire( const glm::vec2& direction, const glm::vec2& position, std::vect
 {
 	static std::mt19937 randomEngine( time( nullptr ) );
 	std::uniform_real_distribution<float> randomRotation( -m_spread, m_spread );
+
+	m_fireEffect.play();
 
 	for ( int i = 0; i < m_bulletsPerShot; i++ )
 	{

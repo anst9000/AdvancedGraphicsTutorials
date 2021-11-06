@@ -1,5 +1,5 @@
 #include "GLSLProgram.h"
-#include "Errors.h"
+#include "BengineErrors.h"
 
 #include <fstream>
 #include <vector>

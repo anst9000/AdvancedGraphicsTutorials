@@ -2,7 +2,7 @@
 
 #include <Bengine/Bengine.h>
 #include <Bengine/Camera2D.h>
-#include <Bengine/Errors.h>
+#include <Bengine/BengineErrors.h>
 #include <Bengine/GLSLProgram.h>
 #include <Bengine/InputManager.h>
 #include <Bengine/ResourceManager.h>
@@ -10,7 +10,7 @@
 #include <Bengine/SpriteFont.h>
 #include <Bengine/Timing.h>
 #include <Bengine/Window.h>
-
+#include <Bengine/AudioEngine.h>
 
 #include "Player.h"
 #include "Level.h"
@@ -93,6 +93,7 @@ private:
 	int m_numZombiesKilled = 0;					///< Zombies killed by player
 
 	Bengine::SpriteFont* m_spriteFont = NULL;	///< Pointer to the SpriteFont
+	Bengine::AudioEngine m_audioEngine;
 
 	GameState m_gameState = GameState::PLAY;
 };

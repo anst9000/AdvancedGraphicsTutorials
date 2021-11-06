@@ -33,6 +33,9 @@ void MainGame::run()
 	initLevel();
 	initPlayer();
 
+	Bengine::Music music = m_audioEngine.loadMusic( "Sound/XYZ.ogg" );
+	music.play( -1 );
+
 	gameLoop();
 }
 
@@ -40,6 +43,9 @@ void MainGame::run()
 void MainGame::initSystems()
 {
 	Bengine::init();
+
+	// Initialize sound must happen after Bengine::Init
+	m_audioEngine.init();
 
 	m_window.create("Zombie Game", m_screenWidth, m_screenHeight, 0);
 	glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
@@ -102,9 +108,9 @@ void MainGame::initPlayer()
 	}
 
 	// Set up the player guns
-	m_player->addGun( new Gun( "Magnum", 10, 1, 5.0f, 30, BULLET_SPEED ) );
-	m_player->addGun( new Gun( "Shotgun", 30, 12, 20.0f, 4, BULLET_SPEED ) );
-	m_player->addGun( new Gun( "MP5", 2, 1, 10.0f, 20, BULLET_SPEED ) );
+	m_player->addGun( new Gun( "Magnum", 10, 1, 5.0f, 30, BULLET_SPEED, m_audioEngine.loadSoundEffect( "Sound/shots/pistol.wav" ) ) );
+	m_player->addGun( new Gun( "Shotgun", 30, 12, 20.0f, 4, BULLET_SPEED, m_audioEngine.loadSoundEffect( "Sound/shots/shotgun.wav" ) ) );
+	m_player->addGun( new Gun( "MP5", 2, 1, 10.0f, 20, BULLET_SPEED, m_audioEngine.loadSoundEffect( "Sound/shots/cg1.wav" ) ) );
 }
 
 /// Initializes the shaders
