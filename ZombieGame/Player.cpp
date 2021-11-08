@@ -2,6 +2,7 @@
 
 #include "Player.h"
 #include "Gun.h"
+#include <Bengine/ResourceManager.h>
 
 
 Player::Player()
@@ -30,7 +31,9 @@ void Player::init(
 
 	m_health = 150.0f;
 
-	m_color = Bengine::ColorRGBA8( 0, 0, 185, 255 );
+	m_color = Bengine::ColorRGBA8( 255, 255, 255, 255 );
+
+	m_textureID = Bengine::ResourceManager::getTexture( "Textures/player.png" ).id;
 }
 
 void Player::addGun( Gun* gun )
@@ -83,21 +86,21 @@ void Player::update(
 		m_currentGunIndex = 2;
 	}
 
+	glm::vec2 mouseCoords = m_inputManager->getMouseCoords();
+	mouseCoords = m_camera->convertScreenToWorld( mouseCoords );
+
+	glm::vec2 centerPosition = m_position + glm::vec2( AGENT_RADIUS );
+	m_direction = glm::normalize( mouseCoords - centerPosition );
+
 	if ( m_currentGunIndex != -1 )
 	{
-		glm::vec2 mouseCoords = m_inputManager->getMouseCoords();
-		mouseCoords = m_camera->convertScreenToWorld( mouseCoords );
-
-		glm::vec2 centerPosition = m_position + glm::vec2( AGENT_RADIUS );
-
-		glm::vec2 direction = glm::normalize( mouseCoords - centerPosition );
-
 		m_guns[ m_currentGunIndex ]->update(
 			m_inputManager->isKeyDown( SDL_BUTTON_LEFT ),
-				centerPosition,
-				direction,
-				*m_bullets,
-				deltaTime);
+			centerPosition,
+			m_direction,
+			*m_bullets,
+			deltaTime
+		);
 	}
 
 	collideWithLevel( levelData );

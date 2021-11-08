@@ -35,7 +35,7 @@ namespace Bengine
 		ColorRGBA8 color;
 
 		// UV texture coordinates
-		UV uv;
+		UV uv { 0.0f };
 
 		void setPosition(float x, float y)
 		{

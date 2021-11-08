@@ -44,9 +44,9 @@ Level::Level(const std::string& fileName)
 	//GLuint redBricks = Bengine::ResourceManager::getTexture("Textures/red_bricks.png").id;
 
 	// Render all the tiles
-	for (int y = 0; y < m_levelData.size(); y++)
+	for (size_t y = 0; y < m_levelData.size(); y++)
 	{
-		for (int x = 0; x < m_levelData[y].size(); x++)
+		for (size_t x = 0; x < m_levelData[y].size(); x++)
 		{
 			char tile = m_levelData[y][x];
 
@@ -67,8 +67,8 @@ Level::Level(const std::string& fileName)
 				break;
 			case '@':
 				m_levelData[ y ][ x ] = '.';					/// So we don't collide with a Player @
-				m_playerPosition.x = x * TILE_WIDTH;
-				m_playerPosition.y = y * TILE_WIDTH;
+				m_playerPosition.x = (float)(x * TILE_WIDTH);
+				m_playerPosition.y = (float)(y * TILE_WIDTH);
 				break;
 			case 'Z':
 				m_levelData[ y ][ x ] = '.';					/// So we don't collide with a Zombie Z

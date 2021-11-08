@@ -36,10 +36,10 @@ public:
 private:
 	Bengine::InputManager* m_inputManager = NULL;
 
-	std::vector<Gun*> m_guns;
+	std::vector<Gun*> m_guns { };
 	int m_currentGunIndex = -1;
 
 	Bengine::Camera2D* m_camera = NULL;
-	std::vector<Bullet>* m_bullets;
+	std::vector<Bullet>* m_bullets { };
 };
 

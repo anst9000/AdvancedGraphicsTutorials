@@ -78,10 +78,7 @@ void Agent::draw(Bengine::SpriteBatch& spriteBatch)
 
 	const glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
 
-	//GLuint textureID = Bengine::ResourceManager::getTexture("Textures/red_bricks.png").id;
-	static int textureID = Bengine::ResourceManager::getTexture( "Textures/circle.png" ).id;
-
-	spriteBatch.draw(destRect, uvRect, textureID, 0.0f, m_color);
+	spriteBatch.draw( destRect, uvRect, m_textureID, 0.0f, m_color, m_direction );
 }
 
 bool Agent::applyDamage( float damage )
@@ -103,7 +100,7 @@ void Agent::checkTilePosition( const std::vector<std::string>& levelData, std::v
 		return;
 	}
 
-	if ( levelData[ cornerPos.y ][ cornerPos.x ] != '.' )
+	if ( levelData[ (const unsigned int)cornerPos.y ][ (const unsigned int)cornerPos.x ] != '.' )
 	{
 		collideTilePositions.push_back( cornerPos * (float)TILE_WIDTH + glm::vec2( (float)TILE_WIDTH / 2.0f ) );
 	}

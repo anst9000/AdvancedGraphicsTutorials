@@ -2,6 +2,7 @@
 #include "Human.h"
 
 #include <algorithm>
+#include <Bengine/ResourceManager.h>
 
 Zombie::Zombie()
 {
@@ -18,7 +19,9 @@ void Zombie::init( float speed, glm::vec2 position )
 
 	m_health = 100.0f;
 
-	m_color = Bengine::ColorRGBA8( 0, 160, 0, 255 );
+	m_color = Bengine::ColorRGBA8( 255, 255, 255, 255 );
+
+	m_textureID = Bengine::ResourceManager::getTexture( "Textures/zombie.png" ).id;
 }
 
 void Zombie::update(
@@ -32,8 +35,8 @@ void Zombie::update(
 
 	if ( closestHuman != nullptr )
 	{
-		glm::vec2 direction = glm::normalize( closestHuman->getPosition() - m_position );
-		m_position += direction * m_speed * deltaTime;
+		m_direction = glm::normalize( closestHuman->getPosition() - m_position );
+		m_position += m_direction * m_speed * deltaTime;
 	}
 
 	collideWithLevel( levelData );

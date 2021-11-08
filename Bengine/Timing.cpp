@@ -28,12 +28,12 @@ namespace Bengine
 	{
 		calculatFPS();
 
-		float frameTicks = SDL_GetTicks() - m_startTicks;
+		float frameTicks = (float)( SDL_GetTicks() - m_startTicks );
 
 		// Limit the FPS to the max FPS
 		if (1000.0f / m_maxFPS > frameTicks)
 		{
-			SDL_Delay(1000.0f / m_maxFPS - frameTicks);
+			SDL_Delay( 1000 / (Uint32)(m_maxFPS - frameTicks) );
 		}
 
 		return m_fps;
@@ -45,10 +45,10 @@ namespace Bengine
 		static float frameTimes[NUM_SAMPLES];
 		static int currentFrame = 0;
 
-		static float prevTicks = SDL_GetTicks();
+		static float prevTicks = (float)SDL_GetTicks();
 
 		float currentTicks;
-		currentTicks = SDL_GetTicks();
+		currentTicks = (float)SDL_GetTicks();
 
 		m_frameTime = currentTicks - prevTicks;
 		frameTimes[currentFrame % NUM_SAMPLES] = m_frameTime;

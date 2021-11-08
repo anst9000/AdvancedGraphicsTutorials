@@ -22,10 +22,10 @@ namespace Bengine
 
 	void Sprite::init(float x, float y, float width, float height, std::string texturePath)
 	{
-		m_x = x;
-		m_y = y;
-		m_width = width;
-		m_height = height;
+		m_x = (int)x;
+		m_y = (int)y;
+		m_width = (int)width;
+		m_height = (int)height;
 
 		m_texture = ResourceManager::getTexture(texturePath);
 

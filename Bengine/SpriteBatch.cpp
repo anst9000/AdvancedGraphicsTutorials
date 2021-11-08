@@ -5,10 +5,9 @@
 namespace Bengine {
 
 
-    Glyph::Glyph( const glm::vec4& destRect, const glm::vec4& uvRect, GLuint Texture, float Depth, const ColorRGBA8& color ) :
-        texture( Texture ),
-        depth( Depth ) {
-
+    Glyph::Glyph( const glm::vec4& destRect, const glm::vec4& uvRect, GLuint Texture, float Depth, const ColorRGBA8& color )
+        : texture( Texture ), depth( Depth )
+    {
         topLeft.color = color;
         topLeft.setPosition( destRect.x, destRect.y + destRect.w );
         topLeft.setUV( uvRect.x, uvRect.y + uvRect.w );
@@ -26,10 +25,9 @@ namespace Bengine {
         topRight.setUV( uvRect.x + uvRect.z, uvRect.y + uvRect.w );
     }
 
-    Glyph::Glyph( const glm::vec4& destRect, const glm::vec4& uvRect, GLuint Texture, float Depth, const ColorRGBA8& color, float angle ) :
-        texture( Texture ),
-        depth( Depth ) {
-
+    Glyph::Glyph( const glm::vec4& destRect, const glm::vec4& uvRect, GLuint Texture, float Depth, const ColorRGBA8& color, float angle )
+        : texture( Texture ), depth( Depth )
+    {
         glm::vec2 halfDims( destRect.z / 2.0f, destRect.w / 2.0f );
 
         // Get points centered at origin
@@ -61,10 +59,12 @@ namespace Bengine {
         topRight.setUV( uvRect.x + uvRect.z, uvRect.y + uvRect.w );
     }
 
-    glm::vec2 Glyph::rotatePoint( const glm::vec2& pos, float angle ) {
+    glm::vec2 Glyph::rotatePoint( const glm::vec2& pos, float angle )
+    {
         glm::vec2 newv;
         newv.x = pos.x * cos( angle ) - pos.y * sin( angle );
         newv.y = pos.x * sin( angle ) + pos.y * cos( angle );
+
         return newv;
     }
 
@@ -78,22 +78,28 @@ namespace Bengine {
         // Empty
     }
 
-    void SpriteBatch::init() {
+    void SpriteBatch::init()
+    {
         createVertexArray();
     }
 
-    void SpriteBatch::dispose() {
-        if ( m_vao != 0 ) {
+    void SpriteBatch::dispose()
+    {
+        if ( m_vao != 0 )
+        {
             glDeleteVertexArrays( 1, &m_vao );
             m_vao = 0;
         }
-        if ( m_vbo != 0 ) {
+
+        if ( m_vbo != 0 )
+        {
             glDeleteBuffers( 1, &m_vbo );
             m_vbo = 0;
         }
     }
 
-    void SpriteBatch::begin( GlyphSortType sortType /* GlyphSortType::TEXTURE */ ) {
+    void SpriteBatch::begin( GlyphSortType sortType /* GlyphSortType::TEXTURE */ )
+    {
         m_sortType = sortType;
         m_renderBatches.clear();
 
@@ -102,10 +108,13 @@ namespace Bengine {
         m_glyphs.clear();
     }
 
-    void SpriteBatch::end() {
+    void SpriteBatch::end()
+    {
         // Set up all pointers for fast sorting
         m_glyphPointers.resize( m_glyphs.size() );
-        for ( size_t i = 0; i < m_glyphs.size(); i++ ) {
+
+        for ( size_t i = 0; i < m_glyphs.size(); i++ )
+        {
             m_glyphPointers[ i ] = &m_glyphs[ i ];
         }
 
@@ -113,29 +122,34 @@ namespace Bengine {
         createRenderBatches();
     }
 
-    void SpriteBatch::draw( const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const ColorRGBA8& color ) {
+    void SpriteBatch::draw( const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const ColorRGBA8& color )
+    {
         m_glyphs.emplace_back( destRect, uvRect, texture, depth, color );
     }
 
-    void SpriteBatch::draw( const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const ColorRGBA8& color, float angle ) {
+    void SpriteBatch::draw( const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const ColorRGBA8& color, float angle ) 
+    {
         m_glyphs.emplace_back( destRect, uvRect, texture, depth, color, angle );
     }
 
-    void SpriteBatch::draw( const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const ColorRGBA8& color, const glm::vec2& dir ) {
+    void SpriteBatch::draw( const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const ColorRGBA8& color, const glm::vec2& direction )
+    {
         const glm::vec2 right( 1.0f, 0.0f );
-        float angle = acos( glm::dot( right, dir ) );
-        if ( dir.y < 0.0f ) angle = -angle;
+        float angle = acos( glm::dot( right, direction ) );
+    
+        if ( direction.y < 0.0f ) angle = -angle;
 
         m_glyphs.emplace_back( destRect, uvRect, texture, depth, color, angle );
     }
 
-    void SpriteBatch::render() {
-
+    void SpriteBatch::render()
+    {
         // Bind our VAO. This sets up the opengl state we need, including the 
         // vertex attribute pointers and it binds the VBO
         glBindVertexArray( m_vao );
 
-        for ( size_t i = 0; i < m_renderBatches.size(); i++ ) {
+        for ( size_t i = 0; i < m_renderBatches.size(); i++ )
+        {
             glBindTexture( GL_TEXTURE_2D, m_renderBatches[ i ].texture );
 
             glDrawArrays( GL_TRIANGLES, m_renderBatches[ i ].offset, m_renderBatches[ i ].numVertices );
@@ -144,14 +158,16 @@ namespace Bengine {
         glBindVertexArray( 0 );
     }
 
-    void SpriteBatch::createRenderBatches() {
+    void SpriteBatch::createRenderBatches()
+    {
         // This will store all the vertices that we need to upload
         std::vector <Vertex> vertices;
         // Resize the buffer to the exact size we need so we can treat
         // it like an array
         vertices.resize( m_glyphPointers.size() * 6 );
 
-        if ( m_glyphPointers.empty() ) {
+        if ( m_glyphPointers.empty() )
+        {
             return;
         }
 
@@ -169,17 +185,21 @@ namespace Bengine {
         offset += 6;
 
         //Add all the rest of the glyphs
-        for ( size_t cg = 1; cg < m_glyphPointers.size(); cg++ ) {
+        for ( size_t cg = 1; cg < m_glyphPointers.size(); cg++ )
+        {
 
             // Check if this glyph can be part of the current batch
-            if ( m_glyphPointers[ cg ]->texture != m_glyphPointers[ cg - 1 ]->texture ) {
+            if ( m_glyphPointers[ cg ]->texture != m_glyphPointers[ cg - 1 ]->texture )
+            {
                 // Make a new batch
                 m_renderBatches.emplace_back( offset, 6, m_glyphPointers[ cg ]->texture );
             }
-            else {
+            else
+            {
                 // If its part of the current batch, just increase numVertices
                 m_renderBatches.back().numVertices += 6;
             }
+
             vertices[ cv++ ] = m_glyphPointers[ cg ]->topLeft;
             vertices[ cv++ ] = m_glyphPointers[ cg ]->bottomLeft;
             vertices[ cv++ ] = m_glyphPointers[ cg ]->bottomRight;
@@ -201,10 +221,12 @@ namespace Bengine {
 
     }
 
-    void SpriteBatch::createVertexArray() {
+    void SpriteBatch::createVertexArray()
+    {
 
         // Generate the VAO if it isn't already generated
-        if ( m_vao == 0 ) {
+        if ( m_vao == 0 )
+        {
             glGenVertexArrays( 1, &m_vao );
         }
 
@@ -212,9 +234,11 @@ namespace Bengine {
         glBindVertexArray( m_vao );
 
         //G enerate the VBO if it isn't already generated
-        if ( m_vbo == 0 ) {
+        if ( m_vbo == 0 )
+        {
             glGenBuffers( 1, &m_vbo );
         }
+
         glBindBuffer( GL_ARRAY_BUFFER, m_vbo );
 
         //Tell opengl what attribute arrays we need
@@ -233,9 +257,10 @@ namespace Bengine {
 
     }
 
-    void SpriteBatch::sortGlyphs() {
-
-        switch ( m_sortType ) {
+    void SpriteBatch::sortGlyphs()
+    {
+        switch ( m_sortType )
+        {
         case GlyphSortType::BACK_TO_FRONT:
             std::stable_sort( m_glyphPointers.begin(), m_glyphPointers.end(), compareBackToFront );
             break;
@@ -245,18 +270,23 @@ namespace Bengine {
         case GlyphSortType::TEXTURE:
             std::stable_sort( m_glyphPointers.begin(), m_glyphPointers.end(), compareTexture );
             break;
+        case GlyphSortType::NONE:
+            break;
         }
     }
 
-    bool SpriteBatch::compareFrontToBack( Glyph* a, Glyph* b ) {
+    bool SpriteBatch::compareFrontToBack( Glyph* a, Glyph* b )
+    {
         return ( a->depth < b->depth );
     }
 
-    bool SpriteBatch::compareBackToFront( Glyph* a, Glyph* b ) {
+    bool SpriteBatch::compareBackToFront( Glyph* a, Glyph* b )
+    {
         return ( a->depth > b->depth );
     }
 
-    bool SpriteBatch::compareTexture( Glyph* a, Glyph* b ) {
+    bool SpriteBatch::compareTexture( Glyph* a, Glyph* b )
+    {
         return ( a->texture < b->texture );
     }
 

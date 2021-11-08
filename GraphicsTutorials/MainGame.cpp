@@ -64,11 +64,11 @@ void MainGame::gameLoop()
 		_fpsLimiter.begin();
 
 		processInput();
-		_time += 0.01;
+		_time += 0.01f;
 
 		m_camera.update();
 
-		for (int i = 0; i < m_bullets.size();)
+		for (size_t i = 0; i < m_bullets.size();)
 		{
 			// Update all bullets
 			if (m_bullets[i].update())
@@ -128,7 +128,7 @@ void MainGame::processInput()
 				m_inputManager.releaseKey(evnt.button.button);
 				break;
 			case SDL_MOUSEMOTION:
-				m_inputManager.setMouseCoords(evnt.motion.x, evnt.motion.y);
+				m_inputManager.setMouseCoords((float)evnt.motion.x, (float)evnt.motion.y);
 				break;
 		}
 	}
@@ -199,14 +199,14 @@ void MainGame::drawGame()
 
 	_spriteBatch.begin();
 
-	glm::vec4 pos(0.0f, 0.0f, 50.0f, 50.0f);
-	glm::vec4 uv(0.0f, 0.0f, 1.0f, 1.0f);
-	static Bengine::GLTexture texture = Bengine::ResourceManager::getTexture("Textures/PNG/CharacterRight_Standing.png");
+	glm::vec4 pos( 0.0f, 0.0f, 50.0f, 50.0f );
+	glm::vec4 uv( 0.0f, 0.0f, 1.0f, 1.0f );
+	static Bengine::GLTexture texture = Bengine::ResourceManager::getTexture( "Textures/PNG/CharacterRight_Standing.png" );
 	Bengine::ColorRGBA8 color( 255, 255, 255, 255 );
 
 	_spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
 
-	for (int i = 0; i < m_bullets.size(); i++)
+	for (size_t i = 0; i < m_bullets.size(); i++)
 	{
 		m_bullets[i].draw(_spriteBatch);
 	}

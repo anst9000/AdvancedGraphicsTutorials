@@ -31,12 +31,14 @@
 
 #include "Vertex.h"
 
-namespace Bengine {
+namespace Bengine
+{
 
     struct GLTexture;
     class SpriteBatch;
 
-    struct CharGlyph {
+    struct CharGlyph
+    {
     public:
         char character;
         glm::vec4 uvRect;
@@ -47,17 +49,19 @@ namespace Bengine {
 #define LAST_PRINTABLE_CHAR ((char)126)
 
     /// For text justification
-    enum class Justification {
+    enum class Justification
+    {
         LEFT, MIDDLE, RIGHT
     };
 
-    class SpriteFont {
+    class SpriteFont
+    {
     public:
         SpriteFont() {};
         SpriteFont(const char* font, int size, char cs, char ce);
         SpriteFont(const char* font, int size) :
-            SpriteFont(font, size, FIRST_PRINTABLE_CHAR, LAST_PRINTABLE_CHAR) {
-        }
+            SpriteFont(font, size, FIRST_PRINTABLE_CHAR, LAST_PRINTABLE_CHAR)
+        { }
 
         void init(const char* font, int size);
         void init(const char* font, int size, char cs, char ce);
@@ -65,7 +69,8 @@ namespace Bengine {
         /// Destroys the font resources
         void dispose();
 
-        int getFontHeight() const {
+        int getFontHeight() const
+        {
             return m_fontHeight;
         }
 
@@ -78,12 +83,12 @@ namespace Bengine {
     private:
         static std::vector<int>* createRows(glm::ivec4* rects, int rectsLength, int r, int padding, int& w);
 
-        int m_regStart = 0;
-        int m_regLength = 0;
-        CharGlyph* m_glyphs = NULL;
-        int m_fontHeight = 0;
+        int m_regStart { 0 };
+        int m_regLength { 0 };
+        CharGlyph* m_glyphs { NULL };
+        int m_fontHeight { 0 };
 
-        unsigned int m_texID = 0;
+        unsigned int m_texID { 0 };
     };
 
 }

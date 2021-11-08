@@ -16,36 +16,45 @@ int closestPow2(int i) {
 
 #define MAX_TEXTURE_RES 4096
 
-namespace Bengine {
+namespace Bengine
+{
 
-    SpriteFont::SpriteFont(const char* font, int size, char cs, char ce) {
+    SpriteFont::SpriteFont(const char* font, int size, char cs, char ce)
+    {
         init(font, size, cs, ce);
     }
 
-    void SpriteFont::init(const char* font, int size) {
+    void SpriteFont::init(const char* font, int size)
+    {
         init(font, size, FIRST_PRINTABLE_CHAR, LAST_PRINTABLE_CHAR);
     }
 
-    void SpriteFont::init(const char* font, int size, char cs, char ce) {
+    void SpriteFont::init(const char* font, int size, char cs, char ce)
+    {
         // Initialize SDL_ttf
-        if (!TTF_WasInit()) {
+        if (!TTF_WasInit())
+        {
             TTF_Init();
         }
         TTF_Font* f = TTF_OpenFont(font, size);
-        if (f == nullptr) {
+        
+        if ( f == nullptr )
+        {
             fprintf(stderr, "Failed to open TTF font %s\n", font);
             fflush(stderr);
             throw 281;
         }
+        
         m_fontHeight = TTF_FontHeight(f);
         m_regStart = cs;
         m_regLength = ce - cs + 1;
         int padding = size / 8;
 
-        // First neasure all the regions
-        glm::ivec4* glyphRects = new glm::ivec4[m_regLength];
+        // First measure all the regions
+        auto* glyphRects = new glm::ivec4[ m_regLength ];
         int i = 0, advance;
-        for (char c = cs; c <= ce; c++) {
+        for (char c = cs; c <= ce; c++)
+        {
             TTF_GlyphMetrics(f, c, &glyphRects[i].x, &glyphRects[i].z, &glyphRects[i].y, &glyphRects[i].w, &advance);
             glyphRects[i].z -= glyphRects[i].x;
             glyphRects[i].x = 0;
@@ -57,7 +66,8 @@ namespace Bengine {
         // Find best partitioning of glyphs
         int rows = 1, w, h, bestWidth = 0, bestHeight = 0, area = MAX_TEXTURE_RES * MAX_TEXTURE_RES, bestRows = 0;
         std::vector<int>* bestPartition = nullptr;
-        while (rows <= m_regLength) {
+        while (rows <= m_regLength)
+        {
             h = rows * (padding + m_fontHeight) + padding;
             auto gr = createRows(glyphRects, m_regLength, rows, padding, w);
 
@@ -66,29 +76,35 @@ namespace Bengine {
             h = closestPow2(h);
 
             // A texture must be feasible
-            if (w > MAX_TEXTURE_RES || h > MAX_TEXTURE_RES) {
+            if (w > MAX_TEXTURE_RES || h > MAX_TEXTURE_RES)
+            {
                 rows++;
                 delete[] gr;
                 continue;
             }
 
             // Check for minimal area
-            if (area >= w * h) {
+            if (area >= w * h)
+            {
                 if (bestPartition) delete[] bestPartition;
+            
                 bestPartition = gr;
                 bestWidth = w;
                 bestHeight = h;
                 bestRows = rows;
                 area = bestWidth * bestHeight;
                 rows++;
-            } else {
+            }
+            else
+            {
                 delete[] gr;
                 break;
             }
         }
 
         // Can a bitmap font be made?
-        if (!bestPartition) {
+        if (!bestPartition)
+        {
             fprintf(stderr, "Failed to Map TTF font %s to texture. Try lowering resolution.\n", font);
             fflush(stderr);
             throw 282;
@@ -101,9 +117,11 @@ namespace Bengine {
         // Now draw all the glyphs
         SDL_Color fg = { 255, 255, 255, 255 };
         int ly = padding;
-        for (int ri = 0; ri < bestRows; ri++) {
+        for (int ri = 0; ri < bestRows; ri++)
+        {
             int lx = padding;
-            for (size_t ci = 0; ci < bestPartition[ri].size(); ci++) {
+            for (size_t ci = 0; ci < bestPartition[ri].size(); ci++)
+            {
                 int gi = bestPartition[ri][ci];
 
                 SDL_Surface* glyphSurface = TTF_RenderGlyph_Blended(f, (char)(cs + gi), fg);
@@ -111,7 +129,8 @@ namespace Bengine {
                 // Pre-multiplication occurs here
                 unsigned char* sp = (unsigned char*)glyphSurface->pixels;
                 int cp = glyphSurface->w * glyphSurface->h * 4;
-                for (int i = 0; i < cp; i += 4) {
+                for (int i = 0; i < cp; i += 4)
+                {
                     float a = sp[i + 3] / 255.0f;
                     sp[i] = (unsigned char)((float)sp[i] * a);
                     sp[i + 1] = sp[i];
@@ -149,7 +168,9 @@ namespace Bengine {
 
         // Create spriteBatch glyphs
         m_glyphs = new CharGlyph[m_regLength + 1];
-        for (i = 0; i < m_regLength; i++) {
+
+        for (i = 0; i < m_regLength; i++)
+        {
             m_glyphs[i].character = (char)(cs + i);
             m_glyphs[i].size = glm::vec2(glyphRects[i].z, glyphRects[i].w);
             m_glyphs[i].uvRect = glm::vec4(
@@ -169,7 +190,8 @@ namespace Bengine {
         TTF_CloseFont(f);
     }
 
-    void SpriteFont::dispose() {
+    void SpriteFont::dispose()
+    {
         if (m_texID != 0) {
             glDeleteTextures(1, &m_texID);
             m_texID = 0;

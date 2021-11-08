@@ -64,11 +64,11 @@ bool Bullet::collideWithAgent( Agent* agent )
 bool Bullet::collideWithLevel( const std::vector<std::string>& levelData )
 {
 	glm::ivec2 gridPosition;
-	gridPosition.x = floor( m_position.x / (float)TILE_WIDTH );
-	gridPosition.y = floor( m_position.y / (float)TILE_WIDTH );
+	gridPosition.x = (int)( floor( m_position.x / (float)TILE_WIDTH ) );
+	gridPosition.y = (int)( floor( m_position.y / (float)TILE_WIDTH ) );
 
 	// If we are outside the world just return
-	if ( gridPosition.x < 0 || gridPosition.x > levelData[ 0 ].size() || gridPosition.y < 0 || gridPosition.y > levelData.size() )
+	if ( gridPosition.x < 0 || (size_t)gridPosition.x > levelData[ 0 ].size() || gridPosition.y < 0 || (size_t)gridPosition.y > levelData.size() )
 	{
 		return true;
 	}

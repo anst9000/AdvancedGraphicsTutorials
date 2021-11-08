@@ -70,7 +70,7 @@ private:
 	void drawHud();
 
 	/// Adds blooc to the particle engine
-	void addBlood( const glm::vec2& position, int numParticles );
+	void addBlood( const glm::vec2& position, size_t numParticles );
 
 	///  Member variables
 	Bengine::Window m_window;					///< The game window

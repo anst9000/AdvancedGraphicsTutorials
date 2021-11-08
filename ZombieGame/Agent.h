@@ -40,10 +40,13 @@ protected:
 
 	void collideWithTile( glm::vec2 tilePos );
 
-	glm::vec2 m_position;
-	float m_speed;
-	float m_health;
+	glm::vec2 m_position { 0.0f };
+	glm::vec2 m_direction { 1.0f, 0.0f };
+	float m_speed { 0.0f };
+	float m_health { 0.0f };
 	
-	Bengine::ColorRGBA8 m_color;
+	Bengine::ColorRGBA8 m_color { 0, 0, 0, 0 };
+
+	GLuint m_textureID { 0 };
 };
 

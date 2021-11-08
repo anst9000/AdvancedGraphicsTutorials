@@ -6,7 +6,7 @@
 
 #include <Bengine/SpriteBatch.h>
 
-const int TILE_WIDTH = 64;
+const size_t TILE_WIDTH = 64;
 const float TILE_RADIUS = (float)TILE_WIDTH / 2.0f;
 
 class Level
