@@ -2,12 +2,6 @@
 
 namespace Bengine
 {
-	void Particle2D::update( float deltaTime )
-	{
-		m_position += m_velocity * deltaTime;
-	}
-
-
 	ParticleBatch2D::ParticleBatch2D()
 	{
 		// Empty
@@ -28,18 +22,18 @@ namespace Bengine
 
 		auto& particle = m_particles[ particleIndex ];
 
-		particle.m_life = 1.0f;
-		particle.m_position = position;
-		particle.m_velocity = velocity;
-		particle.m_color = color;
-		particle.m_width = width;
+		particle.life = 1.0f;
+		particle.position = position;
+		particle.velocity = velocity;
+		particle.color = color;
+		particle.width = width;
 	}
 
 	int ParticleBatch2D::findFreeParticle()
 	{
 		for ( int p = m_lastFreeParticle; p < m_maxParticles; p++ )
 		{
-			if ( m_particles[p].m_life <= 0.0f )
+			if ( m_particles[p].life <= 0.0f )
 			{
 				m_lastFreeParticle = p;
 				return p;
@@ -48,7 +42,7 @@ namespace Bengine
 
 		for ( int p = 0; p < m_lastFreeParticle; p++ )
 		{
-			if ( m_particles[ p ].m_life <= 0.0f )
+			if ( m_particles[ p ].life <= 0.0f )
 			{
 				m_lastFreeParticle = p;
 				return p;
@@ -60,13 +54,20 @@ namespace Bengine
 	}
 
 
-	void ParticleBatch2D::init( int maxParticles, float decayRate, GLTexture texture )
+	void ParticleBatch2D::init(
+		int maxParticles,
+		float decayRate,
+		GLTexture texture,
+		std::function<void( Particle2D&, float )> updateFunc /* = defaultParticleUpdate */
+	)
 	{
 		m_maxParticles = maxParticles;
 		m_particles = new Particle2D[ maxParticles ];
 
 		m_decayRate = decayRate;
 		m_texture = texture;
+
+		m_updateFunc = updateFunc;
 	}
 
 	void ParticleBatch2D::update( float deltaTime )
@@ -74,10 +75,10 @@ namespace Bengine
 		for ( int particle = 0; particle < m_maxParticles; particle++ )
 		{
 			// Check if it is active
-			if ( m_particles[ particle ].m_life > 0.0f )
+			if ( m_particles[ particle ].life > 0.0f )
 			{
-				m_particles[ particle ].update( deltaTime );
-				m_particles[ particle ].m_life -= m_decayRate * deltaTime;
+				m_updateFunc( m_particles[ particle ], deltaTime );
+				m_particles[ particle ].life -= m_decayRate * deltaTime;
 			}
 		}
 	}
@@ -90,10 +91,10 @@ namespace Bengine
 			auto& p = m_particles[ particle ];
 
 			// Check if it is active
-			if ( p.m_life > 0.0f )
+			if ( p.life > 0.0f )
 			{
-				glm::vec4 destRect( p.m_position.x, p.m_position.y, p.m_width, p.m_width );
-				spriteBatch->draw( destRect, uvRect, m_texture.id, 0.0f, p.m_color );
+				glm::vec4 destRect( p.position.x, p.position.y, p.width, p.width );
+				spriteBatch->draw( destRect, uvRect, m_texture.id, 0.0f, p.color );
 			}
 		}
 	}
