@@ -3,12 +3,15 @@
 #include "Ball.h"
 #include <vector>
 
-struct Cell {
+struct Cell
+{
     std::vector<Ball*> balls;
 };
 
-class Grid {
+class Grid
+{
     friend class BallController;
+
 public:
     Grid(int width, int height, int cellSize);
     ~Grid();

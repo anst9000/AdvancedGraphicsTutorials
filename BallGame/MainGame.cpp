@@ -16,11 +16,13 @@ const float MS_PER_SECOND = 1000; // Number of milliseconds in a second
 const float DESIRED_FRAMETIME = MS_PER_SECOND / DESIRED_FPS; // The desired frame time per frame
 const float MAX_DELTA_TIME = 1.0f; // Maximum size of deltaTime
 
-MainGame::~MainGame() {
+MainGame::~MainGame()
+{
     // Empty
 }
 
-void MainGame::run() {
+void MainGame::run()
+{
     init();
     initBalls();
 
@@ -28,7 +30,8 @@ void MainGame::run() {
     Uint32 previousTicks = SDL_GetTicks();
 
     // Game loop
-    while (m_gameState == GameState::RUNNING) {
+    while (m_gameState == GameState::RUNNING)
+    {
         m_fpsLimiter.begin();
         processInput();
 
@@ -41,7 +44,8 @@ void MainGame::run() {
 
         int i = 0; // This counter makes sure we don't spiral to death!
         // Loop while we still have steps to process.
-        while (totalDeltaTime > 0.0f && i < MAX_PHYSICS_STEPS) {
+        while (totalDeltaTime > 0.0f && i < MAX_PHYSICS_STEPS)
+        {
             // The deltaTime should be the the smaller of the totalDeltaTime and MAX_DELTA_TIME
             float deltaTime = std::min(totalDeltaTime, MAX_DELTA_TIME);
             // Update all physics here and pass in deltaTime
@@ -60,11 +64,14 @@ void MainGame::run() {
     }
 }
 
-void MainGame::init() {
+void MainGame::init()
+{
     Bengine::init();
 
     m_screenWidth = 1920;
     m_screenHeight = 1080;
+    //m_screenWidth = 960;
+    //m_screenHeight = 540;
 
     m_window.create("Ball Game", m_screenWidth, m_screenHeight, 0);
     glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -89,11 +96,12 @@ void MainGame::init() {
     
 }
 
-void MainGame::initRenderers() {
-    m_ballRenderers.push_back(std::make_unique<BallRenderer>());
-    m_ballRenderers.push_back(std::make_unique<MomentumBallRenderer>());
-    m_ballRenderers.push_back(std::make_unique<VelocityBallRenderer>(m_screenWidth, m_screenHeight));
-    m_ballRenderers.push_back(std::make_unique<TrippyBallRenderer>(m_screenWidth, m_screenHeight));
+void MainGame::initRenderers()
+{
+    m_ballRenderers.push_back( std::make_unique<BallRenderer>() );
+    m_ballRenderers.push_back( std::make_unique<MomentumBallRenderer>() );
+    m_ballRenderers.push_back( std::make_unique<VelocityBallRenderer>( m_screenWidth, m_screenHeight ) );
+    m_ballRenderers.push_back( std::make_unique<TrippyBallRenderer>( m_screenWidth, m_screenHeight ) );
 
 }
 
@@ -125,7 +133,7 @@ void MainGame::initBalls() {
     possibleBalls.emplace_back(__VA_ARGS__);
 
     // Number of balls to spawn
-    const int NUM_BALLS = 20000;
+    const int NUM_BALLS = 10000;
 
     // Random engine stuff
     std::mt19937 randomEngine((unsigned int)time(nullptr));
@@ -154,8 +162,10 @@ void MainGame::initBalls() {
              3.0f, 4.0f, 0.0f, 0.0f, totalProbability);
     ADD_BALL(1.0f, Bengine::ColorRGBA8(255, 255, 0, 255),
              3.0f, 4.0f, 0.0f, 0.0f, totalProbability);
+
     // Make a bunch of random ball types
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 10000; i++)
+    {
         ADD_BALL(1.0f, Bengine::ColorRGBA8(r2(randomEngine), r2(randomEngine), r2(randomEngine), 255),
                  r1(randomEngine), r1(randomEngine), 0.0f, 0.0f, totalProbability);
     }
@@ -169,12 +179,16 @@ void MainGame::initBalls() {
 
     // Set up ball to spawn with default value
     BallSpawn* ballToSpawn = &possibleBalls[0];
-    for (int i = 0; i < NUM_BALLS; i++) {
+    for (int i = 0; i < NUM_BALLS; i++)
+    {
         // Get the ball spawn roll
         float spawnVal = spawn(randomEngine);
+    
         // Figure out which ball we picked
-        for (size_t j = 0; j < possibleBalls.size(); j++) {
-            if (spawnVal <= possibleBalls[j].probability) {
+        for (size_t j = 0; j < possibleBalls.size(); j++)
+        {
+            if (spawnVal <= possibleBalls[j].probability)
+            {
                 ballToSpawn = &possibleBalls[j];
                 break;
             }
@@ -185,9 +199,12 @@ void MainGame::initBalls() {
 
         // Hacky way to get a random direction
         glm::vec2 direction(randDir(randomEngine), randDir(randomEngine));
-        if (direction.x != 0.0f || direction.y != 0.0f) { // The chances of direction == 0 are astronomically low
+        if (direction.x != 0.0f || direction.y != 0.0f)
+        { // The chances of direction == 0 are astronomically low
             direction = glm::normalize(direction);
-        } else {
+        }
+        else
+        {
             direction = glm::vec2(1.0f, 0.0f); // default direction
         }
 
@@ -195,6 +212,7 @@ void MainGame::initBalls() {
         m_balls.emplace_back(ballToSpawn->radius, ballToSpawn->mass, pos, direction * ballToSpawn->randSpeed(randomEngine),
                              Bengine::ResourceManager::getTexture("Textures/circle.png").id,
                              ballToSpawn->color);
+        
         // Add the ball do the grid. IF YOU EVER CALL EMPLACE BACK AFTER INIT BALLS, m_grid will have DANGLING POINTERS!
         m_grid->addBall(&m_balls.back());
     }
@@ -252,8 +270,10 @@ void MainGame::processInput() {
 
     SDL_Event evnt;
     //Will keep looping until there are no more events to process
-    while (SDL_PollEvent(&evnt)) {
-        switch (evnt.type) {
+    while ( SDL_PollEvent( &evnt ) )
+    {
+        switch ( evnt.type )
+        {
             case SDL_QUIT:
                 m_gameState = GameState::EXIT;
                 break;
@@ -278,26 +298,40 @@ void MainGame::processInput() {
         }
     }
 
-    if (m_inputManager.isKeyPressed(SDLK_ESCAPE)) {
+    if ( m_inputManager.isKeyPressed( SDLK_ESCAPE ) )
+    {
         m_gameState = GameState::EXIT;
     }
+
     // Handle gravity changes
-    if (m_inputManager.isKeyPressed(SDLK_LEFT)) {
-        m_ballController.setGravityDirection(GravityDirection::LEFT);
-    } else if (m_inputManager.isKeyPressed(SDLK_RIGHT)) {
-        m_ballController.setGravityDirection(GravityDirection::RIGHT);
-    } else if (m_inputManager.isKeyPressed(SDLK_UP)) {
-        m_ballController.setGravityDirection(GravityDirection::UP);
-    } else if (m_inputManager.isKeyPressed(SDLK_DOWN)) {
-        m_ballController.setGravityDirection(GravityDirection::DOWN);
-    } else if (m_inputManager.isKeyPressed(SDLK_SPACE)) {
-        m_ballController.setGravityDirection(GravityDirection::NONE);
+    if ( m_inputManager.isKeyPressed( SDLK_LEFT ) )
+    {
+        m_ballController.setGravityDirection( GravityDirection::LEFT );
+    }
+    else if ( m_inputManager.isKeyPressed( SDLK_RIGHT ) )
+    {
+        m_ballController.setGravityDirection( GravityDirection::RIGHT );
+    }
+    else if ( m_inputManager.isKeyPressed( SDLK_UP ) )
+    {
+        m_ballController.setGravityDirection( GravityDirection::UP );
+    }
+    else if ( m_inputManager.isKeyPressed( SDLK_DOWN ) )
+    {
+        m_ballController.setGravityDirection( GravityDirection::DOWN );
+    }
+    else if ( m_inputManager.isKeyPressed( SDLK_SPACE ) )
+    {
+        m_ballController.setGravityDirection( GravityDirection::NONE );
     }
 
     // Switch renderers
-    if (m_inputManager.isKeyPressed(SDLK_1)) {
+    if ( m_inputManager.isKeyPressed( SDLK_1 ) )
+    {
         m_currentRenderer++;
-        if (m_currentRenderer >= (int)m_ballRenderers.size()) {
+    
+        if (m_currentRenderer >= (int)m_ballRenderers.size())
+        {
             m_currentRenderer = 0;
         }
     }

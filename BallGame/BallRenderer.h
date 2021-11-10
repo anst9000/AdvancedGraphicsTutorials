@@ -7,23 +7,27 @@
 #include "Ball.h"
 
 // Ball renderer interface
-class BallRenderer {
+class BallRenderer
+{
 public:
     virtual void renderBalls(Bengine::SpriteBatch& spriteBatch, const std::vector<Ball>& balls,
                              const glm::mat4& projectionMatrix);
+    void lazyInit();
 protected:
     std::unique_ptr<Bengine::GLSLProgram> m_program = nullptr;
 };
 
 // Visualizes kinetic energy
-class MomentumBallRenderer : public BallRenderer {
+class MomentumBallRenderer : public BallRenderer
+{
 public:
     virtual void renderBalls(Bengine::SpriteBatch& spriteBatch, const std::vector<Ball>& balls,
                              const glm::mat4& projectionMatrix) override;
 };
 
 // Visualizes positive X component of velocity, as well as position
-class VelocityBallRenderer : public BallRenderer {
+class VelocityBallRenderer : public BallRenderer
+{
 public:
     VelocityBallRenderer(int screenWidth, int screenHeight);
 
@@ -35,7 +39,8 @@ private:
 };
 
 // Trippy renderer!
-class TrippyBallRenderer : public BallRenderer {
+class TrippyBallRenderer : public BallRenderer
+{
 public:
     TrippyBallRenderer(int screenWidth, int screenHeight);
 

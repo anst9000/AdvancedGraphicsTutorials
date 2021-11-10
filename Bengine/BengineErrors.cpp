@@ -15,7 +15,7 @@ namespace Bengine
 		std::cin >> tmp;
 
 		SDL_Quit();
-		exit(EXIT_FAILURE);
+		exit( EXIT_FAILURE );
 	}
 
 }
