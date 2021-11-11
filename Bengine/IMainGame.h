@@ -27,10 +27,11 @@ namespace Bengine
 
 		const float getFps() const { return m_fps; }
 
+		InputManager inputManager;
+
 	protected:
 		virtual void update();
 		virtual void draw();
-
 
 		bool init();
 		bool initSystems();

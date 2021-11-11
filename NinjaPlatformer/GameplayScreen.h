@@ -12,6 +12,7 @@
 #include <Bengine/Window.h>
 
 #include "Box.h"
+#include "Player.h"
 
 
 // Our custom gameplay screen that inherits from the IGameScreen
@@ -46,6 +47,7 @@ private:
     Bengine::GLTexture m_texture;
     Bengine::Window* m_window;
 
+    Player m_player;
     std::vector<Box> m_boxes;
     std::unique_ptr<b2World> m_world;
 };

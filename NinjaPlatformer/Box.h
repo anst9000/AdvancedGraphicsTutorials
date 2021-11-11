@@ -3,6 +3,8 @@
 #include <box2d/box2d.h>
 #include <glm/glm.hpp>
 #include <Bengine/Vertex.h>
+#include <Bengine/SpriteBatch.h>
+#include <Bengine/GLTexture.h>
 
 class Box
 {
@@ -10,7 +12,17 @@ public:
 	Box();
 	~Box();
 
-	void init( b2World* world, const glm::vec2& position, const glm::vec2& dimensions, Bengine::ColorRGBA8 color );
+	void init(	b2World* world, 
+				const glm::vec2& position, 
+				const glm::vec2& dimensions, 
+				Bengine::GLTexture texture, 
+				Bengine::ColorRGBA8 color, 
+				bool fixedRotation, 
+				glm::vec4 uvRect = glm::vec4( 0.0f, 0.0f, 1.0f, 1.0f
+			)
+	);
+
+	void draw(Bengine::SpriteBatch& spriteBatch);
 
 	b2Body* getBody() const { return m_body; }
 	b2Fixture* getFixture() const { return m_fixture; }
@@ -20,7 +32,9 @@ public:
 private:
 	b2Body* m_body = nullptr;
 	b2Fixture* m_fixture = nullptr;
+	glm::vec4 m_uvRect;
 	glm::vec2 m_dimensions;
 	Bengine::ColorRGBA8 m_color;
+	Bengine::GLTexture m_texture;
 };
 

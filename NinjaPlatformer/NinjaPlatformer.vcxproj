@@ -79,6 +79,7 @@
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="GameplayScreen.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -102,6 +103,7 @@
     <ClInclude Include="Imageset.h">
       <DependentUpon>GUI\xml_schemas\Imageset.xsd</DependentUpon>
     </ClInclude>
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Samples.h">
       <DependentUpon>GUI\xml_schemas\Samples.xsd</DependentUpon>
     </ClInclude>
