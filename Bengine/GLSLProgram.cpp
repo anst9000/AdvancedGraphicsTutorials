@@ -1,172 +1,166 @@
 #include "GLSLProgram.h"
 #include "BengineErrors.h"
+#include "IOManager.h"
+
+#include <vector>
 
 #include <fstream>
-#include <vector>
-#include <algorithm>
 
-namespace Bengine
-{
+namespace Bengine {
 
-	GLSLProgram::GLSLProgram()
-	{
-		// Empty
-	}
+    //The : _numAttributes(0) ect. is an initialization list. It is a better way to initialize variables, since it avoids an extra copy. 
+    GLSLProgram::GLSLProgram() : _numAttributes(0), _programID(0), _vertexShaderID(0), _fragmentShaderID(0)
+    {
 
-	GLSLProgram::~GLSLProgram()
-	{
-		// Empty
-	}
+    }
 
-	void GLSLProgram::compileShaders(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath)
-	{
-		// Vertex and fragment shaders are successfully compiled
-		// Link the together into a program, get a program object.
-		m_programID = glCreateProgram();
 
-		m_vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
-		if (m_vertexShaderID == 0)
-		{
-			fatalError("Vertex shader failed to be created.");
-		}
+    GLSLProgram::~GLSLProgram()
+    {
+    }
 
-		m_fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
-		if (m_fragmentShaderID == 0)
-		{
-			fatalError("Fragment shader failed to be created.");
-		}
+    //Compiles the shaders into a form that your GPU can understand
+    void GLSLProgram::compileShaders(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath) {
+        std::vector<unsigned char> vecVertSource;
+        std::vector<unsigned char> vecFragSource;
+        //std::string vertSource;
+        //std::string fragSource;
+        
+        IOManager::readFileToBuffer(vertexShaderFilePath, vecVertSource );
+        IOManager::readFileToBuffer(fragmentShaderFilePath, vecFragSource );
 
-		compileShader(vertexShaderFilePath, m_vertexShaderID);
-		compileShader(fragmentShaderFilePath, m_fragmentShaderID);
-	}
+        std::string vertSource( vecVertSource.begin(), vecVertSource.end() );
+        std::string fragSource( vecFragSource.begin(), vecFragSource.end() );
 
-	void GLSLProgram::linkShaders()
-	{
-		// Attach our shaders to our program
-		glAttachShader(m_programID, m_vertexShaderID);
-		glAttachShader(m_programID, m_fragmentShaderID);
+        compileShadersFromSource(vertSource.c_str(), fragSource.c_str());
+    }
 
-		// Link our program
-		glLinkProgram(m_programID);
+    void GLSLProgram::compileShadersFromSource(const char* vertexSource, const char* fragmentSource) {
+        //Vertex and fragment shaders are successfully compiled.
+        //Now time to link them together into a program.
+        //Get a program object.
+        _programID = glCreateProgram();
 
-		// Note the different functions here: glGetProgram* instead of glGetShader*
-		GLint isLinked = 0;
-		glGetProgramiv(m_programID, GL_LINK_STATUS, (int*)&isLinked);
-		if (isLinked == GL_FALSE)
-		{
-			GLint maxLength = 0;
-			glGetProgramiv(m_programID, GL_INFO_LOG_LENGTH, &maxLength);
+        //Create the vertex shader object, and store its ID
+        _vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
+        if (_vertexShaderID == 0) {
+            fatalError("Vertex shader failed to be created!");
+        }
 
-			// The maxLength includes the NULL character
-			std::vector<GLchar> errorLog(maxLength);
-			glGetProgramInfoLog(m_programID, maxLength, &maxLength, &errorLog[0]);
+        //Create the fragment shader object, and store its ID
+        _fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
+        if (_fragmentShaderID == 0) {
+            fatalError("Fragment shader failed to be created!");
+        }
 
-			// We don't need the program anymore
-			glDeleteProgram(m_programID);
-			// Don't leak shaders either
-			glDeleteShader(m_vertexShaderID);
-			glDeleteShader(m_fragmentShaderID);
+        //Compile each shader
+        compileShader(vertexSource, "Vertex Shader", _vertexShaderID);
+        compileShader(fragmentSource, "Fragment Shader", _fragmentShaderID);
+    }
 
-			std::printf("%s\n", &(errorLog[0]));
-			fatalError("Shaders failed to link");
-		}
+    void GLSLProgram::linkShaders() {
 
-		// Always detach shaders after a successful link.
-		glDetachShader(m_programID, m_vertexShaderID);
-		glDetachShader(m_programID, m_fragmentShaderID);
+        //Attach our shaders to our program
+        glAttachShader(_programID, _vertexShaderID);
+        glAttachShader(_programID, _fragmentShaderID);
 
-		glDeleteShader(m_vertexShaderID);
-		glDeleteShader(m_fragmentShaderID);
-	}
+        //Link our program
+        glLinkProgram(_programID);
 
-	// Adds an attribute to our shader. Should be called between compiling and linking.
-	void GLSLProgram::addAttribute(const std::string& attributeName)
-	{
-		glBindAttribLocation(m_programID, m_numAttributes++, attributeName.c_str());
-	}
+        //Note the different functions here: glGetProgram* instead of glGetShader*.
+        GLint isLinked = 0;
+        glGetProgramiv(_programID, GL_LINK_STATUS, (int *)&isLinked);
+        if (isLinked == GL_FALSE)
+        {
+            GLint maxLength = 0;
+            glGetProgramiv(_programID, GL_INFO_LOG_LENGTH, &maxLength);
 
-	GLint GLSLProgram::getUniformLocation(const std::string uniformName)
-	{
-		GLint location = glGetUniformLocation(m_programID, uniformName.c_str());
+            //The maxLength includes the NULL character
+            std::vector<char> errorLog(maxLength);
+            glGetProgramInfoLog(_programID, maxLength, &maxLength, &errorLog[0]);
 
-		if (location == GL_INVALID_INDEX)
-		{
-			fatalError("Uniform " + uniformName + " not found in shader");
-		}
+            //We don't need the program anymore.
+            glDeleteProgram(_programID);
+            //Don't leak shaders either.
+            glDeleteShader(_vertexShaderID);
+            glDeleteShader(_fragmentShaderID);
 
-		return location;
-	}
+            //print the error log and quit
+            std::printf("%s\n", &(errorLog[0]));
+            fatalError("Shaders failed to link!");
+        }
 
-	// Enable the shader, and all its attributes
-	void GLSLProgram::use()
-	{
-		glUseProgram(m_programID);
+        //Always detach shaders after a successful link.
+        glDetachShader(_programID, _vertexShaderID);
+        glDetachShader(_programID, _fragmentShaderID);
+        glDeleteShader(_vertexShaderID);
+        glDeleteShader(_fragmentShaderID);
+    }
 
-		for (int i = 0; i < m_numAttributes; i++)
-		{
-			glEnableVertexAttribArray(i);
-		}
-	}
+    //Adds an attribute to our shader. SHould be called between compiling and linking.
+    void GLSLProgram::addAttribute(const std::string& attributeName) {
+        glBindAttribLocation(_programID, _numAttributes++, attributeName.c_str());
+    }
 
-	// Disable the shader
-	void GLSLProgram::unuse()
-	{
-		glUseProgram(0);
+    GLint GLSLProgram::getUniformLocation(const std::string& uniformName) {
+        GLint location = glGetUniformLocation(_programID, uniformName.c_str());
+        if (location == GL_INVALID_INDEX) {
+            fatalError("Uniform " + uniformName + " not found in shader!");
+        }
+        return location;
+    }
 
-		for (int i = 0; i < m_numAttributes; i++)
-		{
-			glDisableVertexAttribArray(i);
-		}
-	}
+    //enable the shader, and all its attributes
+    void GLSLProgram::use() {
+        glUseProgram(_programID);
+        //enable all the attributes we added with addAttribute
+        for (int i = 0; i < _numAttributes; i++) {
+            glEnableVertexAttribArray(i);
+        }
+    }
 
-	// Compiles a single shader file
-	void GLSLProgram::compileShader(const std::string& filePath, GLuint id)
-	{
-		std::ifstream shaderFile(filePath);
-		if (shaderFile.fail())
-		{
-			perror(filePath.c_str());
-			fatalError("Failed to open " + filePath);
-		}
+    //disable the shader
+    void GLSLProgram::unuse() {
+        glUseProgram(0);
+        for (int i = 0; i < _numAttributes; i++) {
+            glDisableVertexAttribArray(i);
+        }
+    }
 
-		std::string fileContents;
-		std::string line;
+    void GLSLProgram::dispose() {
+        if (_programID) glDeleteProgram(_programID);
+    }
 
-		while (std::getline(shaderFile, line))
-		{
-			fileContents += line + "\n";
-		}
+    //Compiles a single shader file
+    void GLSLProgram::compileShader(const char* source, const std::string& name, GLuint id) {
 
-		shaderFile.close();
+        //tell opengl that we want to use fileContents as the contents of the shader file
+        glShaderSource(id, 1, &source, nullptr);
 
-		// Get a pointer to our file contents c string
-		const char* contentsPtr = fileContents.c_str();
-		// Tell OpenGL that we want to use fileContents as the contents of the shader file
-		glShaderSource(id, 1, &contentsPtr, nullptr);
+        //compile the shader
+        glCompileShader(id);
 
-		// Compile the shader
-		glCompileShader(id);
+        //check for errors
+        GLint success = 0;
+        glGetShaderiv(id, GL_COMPILE_STATUS, &success);
 
-		// Check for errors
-		GLint success = 0;
-		glGetShaderiv(id, GL_COMPILE_STATUS, &success);
+        if (success == GL_FALSE)
+        {
+            GLint maxLength = 0;
+            glGetShaderiv(id, GL_INFO_LOG_LENGTH, &maxLength);
 
-		if (success == GL_FALSE)
-		{
-			GLint maxLength = 0;
-			glGetShaderiv(id, GL_INFO_LOG_LENGTH, &maxLength);
+            //The maxLength includes the NULL character
+            std::vector<char> errorLog(maxLength);
+            glGetShaderInfoLog(id, maxLength, &maxLength, &errorLog[0]);
 
-			// The maxLength includes the NULL character
-			std::vector<GLchar> errorLog(maxLength);
-			glGetShaderInfoLog(id, maxLength, &maxLength, &errorLog[0]);
+            //Provide the infolog in whatever manor you deem best.
+            //Exit with failure.
+            glDeleteShader(id); //Don't leak the shader.
 
-			// Provide the infolog in whatever manor you deem best.
-			// Exit with failure
-			glDeleteShader(id);	// Don't leak the shader
-
-			std::printf("%s\n", &(errorLog[0]));
-			fatalError("Shader " + filePath + " failed to compile");
-		}
-	}
+            //Print error log and quit
+            std::printf("%s\n", &(errorLog[0]));
+            fatalError("Shader " + name + " failed to compile");
+        }
+    }
 
 }

@@ -13,6 +13,45 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\Assets">
+      <UniqueIdentifier>{4a32b4f8-fecd-42b9-b591-9f113be492aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Fonts">
+      <UniqueIdentifier>{595515d0-a6b3-49dc-972d-9acd485bf1f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\GUI">
+      <UniqueIdentifier>{25616834-a339-414b-bbf6-2cf12673b6be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Levels">
+      <UniqueIdentifier>{4d9b08b3-71ab-4c20-9a7b-8259f5004d10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders">
+      <UniqueIdentifier>{6bb1413e-5369-4836-85cb-b08dd3c9013e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\GUI\animations">
+      <UniqueIdentifier>{0ab8f458-e12d-48c8-9230-3f52bed201e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\GUI\fonts">
+      <UniqueIdentifier>{629265d0-936b-4a84-b068-40ff8bd06c8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\GUI\imagesets">
+      <UniqueIdentifier>{1a81de7f-9c3d-429e-9029-31fadbee843b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\GUI\layouts">
+      <UniqueIdentifier>{617137fc-fe9e-4f45-a713-fbe4d52eb949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\GUI\looknfeel">
+      <UniqueIdentifier>{53478701-7bb7-4232-b910-a7db9f2b17df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\GUI\lua_scripts">
+      <UniqueIdentifier>{64132593-76cd-4d9a-9299-6adac0a7d18d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\GUI\schemes">
+      <UniqueIdentifier>{42d49135-2f37-4f53-b916-2ced07a1d06b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\GUI\xml_schemas">
+      <UniqueIdentifier>{a7d20237-fd00-4cdd-971b-949a0c7de803}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,6 +63,9 @@
     <ClCompile Include="GameplayScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h">
@@ -32,5 +74,411 @@
     <ClInclude Include="GameplayScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\color.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\color.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\lightShading.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\lightShading.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\textureShading.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\textureShading.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="GUI\animations\example.anims">
+      <Filter>Resource Files\GUI\animations</Filter>
+    </None>
+    <None Include="GUI\animations\GameMenu.anims">
+      <Filter>Resource Files\GUI\animations</Filter>
+    </None>
+    <None Include="GUI\fonts\Batang-18.font">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </None>
+    <None Include="GUI\fonts\DejaVuSans-10.font">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </None>
+    <None Include="GUI\fonts\DejaVuSans-10-NoScale.font">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </None>
+    <None Include="GUI\fonts\DejaVuSans-12.font">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </None>
+    <None Include="GUI\fonts\DejaVuSans-12-NoScale.font">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </None>
+    <None Include="GUI\fonts\DejaVuSans-14.font">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </None>
+    <None Include="GUI\fonts\DejaVuSans-14-NoScale.font">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </None>
+    <None Include="GUI\fonts\FairChar-30.font">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </None>
+    <None Include="GUI\fonts\GreatVibes-16.font">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </None>
+    <None Include="GUI\fonts\GreatVibes-22.font">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </None>
+    <None Include="GUI\fonts\Junicode-13.font">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </None>
+    <None Include="GUI\fonts\Jura-10.font">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </None>
+    <None Include="GUI\fonts\Jura-13.font">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </None>
+    <None Include="GUI\fonts\Jura-18.font">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </None>
+    <None Include="GUI\imagesets\AlfiskoSkin.imageset">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </None>
+    <None Include="GUI\imagesets\DriveIcons.imageset">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </None>
+    <None Include="GUI\imagesets\FairChar.imageset">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </None>
+    <None Include="GUI\imagesets\GameMenu.imageset">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </None>
+    <None Include="GUI\imagesets\HUDDemo.imageset">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </None>
+    <None Include="GUI\imagesets\OgreTray.imageset">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </None>
+    <None Include="GUI\imagesets\SampleBrowser.imageset">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </None>
+    <None Include="GUI\imagesets\TaharezLook.imageset">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </None>
+    <None Include="GUI\imagesets\Vanilla.imageset">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </None>
+    <None Include="GUI\imagesets\WindowsLook.imageset">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </None>
+    <None Include="GUI\layouts\Console.wnd">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\Demo8.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\DragDropDemo.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\EffectsDemo.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\FontDemo.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\GameMenu.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\HUDDemoGameOver.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\HUDDemoIngame.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\SampleBrowser.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\SampleBrowserLoadScreen.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\TabControlDemo.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\TabPage.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\TabPage1.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\TabPage1.layout.orig">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\TabPage2.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\TextDemo.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\TreeDemoTaharez.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\VanillaConsole.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\layouts\VanillaWindows.layout">
+      <Filter>Resource Files\GUI\layouts</Filter>
+    </None>
+    <None Include="GUI\looknfeel\AlfiskoSkin.looknfeel">
+      <Filter>Resource Files\GUI\looknfeel</Filter>
+    </None>
+    <None Include="GUI\looknfeel\GameMenu.looknfeel">
+      <Filter>Resource Files\GUI\looknfeel</Filter>
+    </None>
+    <None Include="GUI\looknfeel\Generic.looknfeel">
+      <Filter>Resource Files\GUI\looknfeel</Filter>
+    </None>
+    <None Include="GUI\looknfeel\HUDDemo.looknfeel">
+      <Filter>Resource Files\GUI\looknfeel</Filter>
+    </None>
+    <None Include="GUI\looknfeel\Inherited.looknfeel">
+      <Filter>Resource Files\GUI\looknfeel</Filter>
+    </None>
+    <None Include="GUI\looknfeel\InventoryComponents.looknfeel">
+      <Filter>Resource Files\GUI\looknfeel</Filter>
+    </None>
+    <None Include="GUI\looknfeel\OgreTray.looknfeel">
+      <Filter>Resource Files\GUI\looknfeel</Filter>
+    </None>
+    <None Include="GUI\looknfeel\SampleBrowser.looknfeel">
+      <Filter>Resource Files\GUI\looknfeel</Filter>
+    </None>
+    <None Include="GUI\looknfeel\TaharezLook.looknfeel">
+      <Filter>Resource Files\GUI\looknfeel</Filter>
+    </None>
+    <None Include="GUI\looknfeel\Vanilla.looknfeel">
+      <Filter>Resource Files\GUI\looknfeel</Filter>
+    </None>
+    <None Include="GUI\looknfeel\VanillaCommonDialogs.looknfeel">
+      <Filter>Resource Files\GUI\looknfeel</Filter>
+    </None>
+    <None Include="GUI\looknfeel\WindowsLook.looknfeel">
+      <Filter>Resource Files\GUI\looknfeel</Filter>
+    </None>
+    <None Include="GUI\lua_scripts\demo8.lua">
+      <Filter>Resource Files\GUI\lua_scripts</Filter>
+    </None>
+    <None Include="GUI\schemes\AlfiskoSkin.scheme">
+      <Filter>Resource Files\GUI\schemes</Filter>
+    </None>
+    <None Include="GUI\schemes\GameMenu.scheme">
+      <Filter>Resource Files\GUI\schemes</Filter>
+    </None>
+    <None Include="GUI\schemes\Generic.scheme">
+      <Filter>Resource Files\GUI\schemes</Filter>
+    </None>
+    <None Include="GUI\schemes\HUDDemo.scheme">
+      <Filter>Resource Files\GUI\schemes</Filter>
+    </None>
+    <None Include="GUI\schemes\OgreTray.scheme">
+      <Filter>Resource Files\GUI\schemes</Filter>
+    </None>
+    <None Include="GUI\schemes\SampleBrowser.scheme">
+      <Filter>Resource Files\GUI\schemes</Filter>
+    </None>
+    <None Include="GUI\schemes\TaharezLook.scheme">
+      <Filter>Resource Files\GUI\schemes</Filter>
+    </None>
+    <None Include="GUI\schemes\TaharezLook.scheme.orig">
+      <Filter>Resource Files\GUI\schemes</Filter>
+    </None>
+    <None Include="GUI\schemes\VanillaCommonDialogs.scheme">
+      <Filter>Resource Files\GUI\schemes</Filter>
+    </None>
+    <None Include="GUI\schemes\VanillaCommonDialogs.scheme.orig">
+      <Filter>Resource Files\GUI\schemes</Filter>
+    </None>
+    <None Include="GUI\schemes\VanillaSkin.scheme">
+      <Filter>Resource Files\GUI\schemes</Filter>
+    </None>
+    <None Include="GUI\schemes\WindowsLook.scheme">
+      <Filter>Resource Files\GUI\schemes</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Levels\DumbLevel.txt">
+      <Filter>Resource Files\Levels</Filter>
+    </Text>
+    <Text Include="GUI\fonts\Legal.txt">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Text>
+    <Text Include="GUI\fonts\LicenseApache.txt">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Text>
+    <Text Include="GUI\fonts\LicenseDejaVu.txt">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Text>
+    <Text Include="GUI\fonts\LicenseGPL.txt">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Text>
+    <Text Include="GUI\fonts\LicenseMIT.txt">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Text>
+    <Text Include="GUI\fonts\LicenseSIL.txt">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Text>
+    <Text Include="GUI\fonts\LicenseUbuntuFont.txt">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Text>
+    <Text Include="GUI\imagesets\ReadMe.txt">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Text>
+    <Text Include="Assets\credits.txt">
+      <Filter>Resource Files\Assets</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="GUI\fonts\batang.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\DejaVuSans.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\DejaVuSerif.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\FetteClassicUNZFraktur.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\Futhark Adapted.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\GreatVibes-Regular.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\IMFePIrm29P.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\Junicode.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\Jura-DemiBold.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\Jura-Light.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\Jura-Medium.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\Jura-Regular.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\Klingon-pIqaD-HaSta.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\mizufalp.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\RichStyle.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="GUI\fonts\Tnua-Libre.ttf">
+      <Filter>Resource Files\GUI\fonts</Filter>
+    </Font>
+    <Font Include="Fonts\chintzy.ttf">
+      <Filter>Resource Files\Fonts</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="GUI\imagesets\AlfiskoSkin.png">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="GUI\imagesets\Aliasing.jpg">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="GUI\imagesets\BackgroundSampleBrowser.jpg">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="GUI\imagesets\DriveIcons.png">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="GUI\imagesets\FairChar.png">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="GUI\imagesets\GameMenu.png">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="GUI\imagesets\HUDDemo.png">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="GUI\imagesets\HUDDemoGameOver.png">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="GUI\imagesets\logo.png">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="GUI\imagesets\OgreTrayImages.png">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="GUI\imagesets\SampleBrowser.png">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="GUI\imagesets\SpaceBackground.jpg">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="GUI\imagesets\TaharezLook.png">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="GUI\imagesets\vanilla.png">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="GUI\imagesets\WindowsLook.png">
+      <Filter>Resource Files\GUI\imagesets</Filter>
+    </Image>
+    <Image Include="Assets\blank.png">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
+    <Image Include="Assets\blue_ninja.png">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
+    <Image Include="Assets\bricks_light_top.png">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
+    <Image Include="Assets\bricks_loam_top.png">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
+    <Image Include="Assets\bricks_top.png">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
+    <Image Include="Assets\glass_metal_frame_top.png">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Xsd Include="GUI\xml_schemas\Animation.xsd">
+      <Filter>Resource Files\GUI\xml_schemas</Filter>
+    </Xsd>
+    <Xsd Include="GUI\xml_schemas\CEGUIConfig.xsd">
+      <Filter>Resource Files\GUI\xml_schemas</Filter>
+    </Xsd>
+    <Xsd Include="GUI\xml_schemas\Falagard.xsd">
+      <Filter>Resource Files\GUI\xml_schemas</Filter>
+    </Xsd>
+    <Xsd Include="GUI\xml_schemas\Font.xsd">
+      <Filter>Resource Files\GUI\xml_schemas</Filter>
+    </Xsd>
+    <Xsd Include="GUI\xml_schemas\GUIScheme.xsd">
+      <Filter>Resource Files\GUI\xml_schemas</Filter>
+    </Xsd>
+    <Xsd Include="GUI\xml_schemas\Imageset.xsd">
+      <Filter>Resource Files\GUI\xml_schemas</Filter>
+    </Xsd>
+    <Xsd Include="GUI\xml_schemas\Samples.xsd">
+      <Filter>Resource Files\GUI\xml_schemas</Filter>
+    </Xsd>
   </ItemGroup>
 </Project>

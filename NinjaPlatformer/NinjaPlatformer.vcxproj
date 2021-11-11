@@ -40,11 +40,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(SolutionDir)deps/include;$(SolutionDir);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)deps/lib/;$(SolutionDir)deps/lib/Debug/;$(SolutionDir)Debug/;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)deps/lib/Debug/;$(SolutionDir)Debug/;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(SolutionDir)deps/include;$(SolutionDir);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)deps/lib/;$(SolutionDir)deps/lib/Release/;$(SolutionDir)Release/;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)deps/lib/Release/;$(SolutionDir)Release/;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -54,7 +54,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_mixer.lib;opengl32.lib;glew32.lib;Bengine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_mixer.lib;glew32.lib;opengl32.lib;Bengine.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -70,18 +70,182 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_mixer.lib;opengl32.lib;glew32.lib;Bengine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_mixer.lib;glew32.lib;opengl32.lib;Bengine.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="Box.cpp" />
     <ClCompile Include="GameplayScreen.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h">
+      <DependentUpon>GUI\xml_schemas\Animation.xsd</DependentUpon>
+    </ClInclude>
     <ClInclude Include="App.h" />
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="CEGUIConfig.h">
+      <DependentUpon>GUI\xml_schemas\CEGUIConfig.xsd</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Falagard.h">
+      <DependentUpon>GUI\xml_schemas\Falagard.xsd</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <DependentUpon>GUI\xml_schemas\Font.xsd</DependentUpon>
+    </ClInclude>
     <ClInclude Include="GameplayScreen.h" />
+    <ClInclude Include="GUIScheme.h">
+      <DependentUpon>GUI\xml_schemas\GUIScheme.xsd</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Imageset.h">
+      <DependentUpon>GUI\xml_schemas\Imageset.xsd</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Samples.h">
+      <DependentUpon>GUI\xml_schemas\Samples.xsd</DependentUpon>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GUI\animations\example.anims" />
+    <None Include="GUI\animations\GameMenu.anims" />
+    <None Include="GUI\fonts\Batang-18.font" />
+    <None Include="GUI\fonts\DejaVuSans-10-NoScale.font" />
+    <None Include="GUI\fonts\DejaVuSans-10.font" />
+    <None Include="GUI\fonts\DejaVuSans-12-NoScale.font" />
+    <None Include="GUI\fonts\DejaVuSans-12.font" />
+    <None Include="GUI\fonts\DejaVuSans-14-NoScale.font" />
+    <None Include="GUI\fonts\DejaVuSans-14.font" />
+    <None Include="GUI\fonts\FairChar-30.font" />
+    <None Include="GUI\fonts\GreatVibes-16.font" />
+    <None Include="GUI\fonts\GreatVibes-22.font" />
+    <None Include="GUI\fonts\Junicode-13.font" />
+    <None Include="GUI\fonts\Jura-10.font" />
+    <None Include="GUI\fonts\Jura-13.font" />
+    <None Include="GUI\fonts\Jura-18.font" />
+    <None Include="GUI\imagesets\AlfiskoSkin.imageset" />
+    <None Include="GUI\imagesets\DriveIcons.imageset" />
+    <None Include="GUI\imagesets\FairChar.imageset" />
+    <None Include="GUI\imagesets\GameMenu.imageset" />
+    <None Include="GUI\imagesets\HUDDemo.imageset" />
+    <None Include="GUI\imagesets\OgreTray.imageset" />
+    <None Include="GUI\imagesets\SampleBrowser.imageset" />
+    <None Include="GUI\imagesets\TaharezLook.imageset" />
+    <None Include="GUI\imagesets\Vanilla.imageset" />
+    <None Include="GUI\imagesets\WindowsLook.imageset" />
+    <None Include="GUI\layouts\Console.wnd" />
+    <None Include="GUI\layouts\Demo8.layout" />
+    <None Include="GUI\layouts\DragDropDemo.layout" />
+    <None Include="GUI\layouts\EffectsDemo.layout" />
+    <None Include="GUI\layouts\FontDemo.layout" />
+    <None Include="GUI\layouts\GameMenu.layout" />
+    <None Include="GUI\layouts\HUDDemoGameOver.layout" />
+    <None Include="GUI\layouts\HUDDemoIngame.layout" />
+    <None Include="GUI\layouts\SampleBrowser.layout" />
+    <None Include="GUI\layouts\SampleBrowserLoadScreen.layout" />
+    <None Include="GUI\layouts\TabControlDemo.layout" />
+    <None Include="GUI\layouts\TabPage.layout" />
+    <None Include="GUI\layouts\TabPage1.layout" />
+    <None Include="GUI\layouts\TabPage1.layout.orig" />
+    <None Include="GUI\layouts\TabPage2.layout" />
+    <None Include="GUI\layouts\TextDemo.layout" />
+    <None Include="GUI\layouts\TreeDemoTaharez.layout" />
+    <None Include="GUI\layouts\VanillaConsole.layout" />
+    <None Include="GUI\layouts\VanillaWindows.layout" />
+    <None Include="GUI\looknfeel\AlfiskoSkin.looknfeel" />
+    <None Include="GUI\looknfeel\GameMenu.looknfeel" />
+    <None Include="GUI\looknfeel\Generic.looknfeel" />
+    <None Include="GUI\looknfeel\HUDDemo.looknfeel" />
+    <None Include="GUI\looknfeel\Inherited.looknfeel" />
+    <None Include="GUI\looknfeel\InventoryComponents.looknfeel" />
+    <None Include="GUI\looknfeel\OgreTray.looknfeel" />
+    <None Include="GUI\looknfeel\SampleBrowser.looknfeel" />
+    <None Include="GUI\looknfeel\TaharezLook.looknfeel" />
+    <None Include="GUI\looknfeel\Vanilla.looknfeel" />
+    <None Include="GUI\looknfeel\VanillaCommonDialogs.looknfeel" />
+    <None Include="GUI\looknfeel\WindowsLook.looknfeel" />
+    <None Include="GUI\lua_scripts\demo8.lua" />
+    <None Include="GUI\schemes\AlfiskoSkin.scheme" />
+    <None Include="GUI\schemes\GameMenu.scheme" />
+    <None Include="GUI\schemes\Generic.scheme" />
+    <None Include="GUI\schemes\HUDDemo.scheme" />
+    <None Include="GUI\schemes\OgreTray.scheme" />
+    <None Include="GUI\schemes\SampleBrowser.scheme" />
+    <None Include="GUI\schemes\TaharezLook.scheme" />
+    <None Include="GUI\schemes\TaharezLook.scheme.orig" />
+    <None Include="GUI\schemes\VanillaCommonDialogs.scheme" />
+    <None Include="GUI\schemes\VanillaCommonDialogs.scheme.orig" />
+    <None Include="GUI\schemes\VanillaSkin.scheme" />
+    <None Include="GUI\schemes\WindowsLook.scheme" />
+    <None Include="Shaders\color.frag" />
+    <None Include="Shaders\color.vert" />
+    <None Include="Shaders\lightShading.frag" />
+    <None Include="Shaders\lightShading.vert" />
+    <None Include="Shaders\textureShading.frag" />
+    <None Include="Shaders\textureShading.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Assets\credits.txt" />
+    <Text Include="GUI\fonts\Legal.txt" />
+    <Text Include="GUI\fonts\LicenseApache.txt" />
+    <Text Include="GUI\fonts\LicenseDejaVu.txt" />
+    <Text Include="GUI\fonts\LicenseGPL.txt" />
+    <Text Include="GUI\fonts\LicenseMIT.txt" />
+    <Text Include="GUI\fonts\LicenseSIL.txt" />
+    <Text Include="GUI\fonts\LicenseUbuntuFont.txt" />
+    <Text Include="GUI\imagesets\ReadMe.txt" />
+    <Text Include="Levels\DumbLevel.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Fonts\chintzy.ttf" />
+    <Font Include="GUI\fonts\batang.ttf" />
+    <Font Include="GUI\fonts\DejaVuSans.ttf" />
+    <Font Include="GUI\fonts\DejaVuSerif.ttf" />
+    <Font Include="GUI\fonts\FetteClassicUNZFraktur.ttf" />
+    <Font Include="GUI\fonts\Futhark Adapted.ttf" />
+    <Font Include="GUI\fonts\GreatVibes-Regular.ttf" />
+    <Font Include="GUI\fonts\IMFePIrm29P.ttf" />
+    <Font Include="GUI\fonts\Junicode.ttf" />
+    <Font Include="GUI\fonts\Jura-DemiBold.ttf" />
+    <Font Include="GUI\fonts\Jura-Light.ttf" />
+    <Font Include="GUI\fonts\Jura-Medium.ttf" />
+    <Font Include="GUI\fonts\Jura-Regular.ttf" />
+    <Font Include="GUI\fonts\Klingon-pIqaD-HaSta.ttf" />
+    <Font Include="GUI\fonts\mizufalp.ttf" />
+    <Font Include="GUI\fonts\RichStyle.ttf" />
+    <Font Include="GUI\fonts\Tnua-Libre.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\blank.png" />
+    <Image Include="Assets\blue_ninja.png" />
+    <Image Include="Assets\bricks_light_top.png" />
+    <Image Include="Assets\bricks_loam_top.png" />
+    <Image Include="Assets\bricks_top.png" />
+    <Image Include="Assets\glass_metal_frame_top.png" />
+    <Image Include="GUI\imagesets\AlfiskoSkin.png" />
+    <Image Include="GUI\imagesets\Aliasing.jpg" />
+    <Image Include="GUI\imagesets\BackgroundSampleBrowser.jpg" />
+    <Image Include="GUI\imagesets\DriveIcons.png" />
+    <Image Include="GUI\imagesets\FairChar.png" />
+    <Image Include="GUI\imagesets\GameMenu.png" />
+    <Image Include="GUI\imagesets\HUDDemo.png" />
+    <Image Include="GUI\imagesets\HUDDemoGameOver.png" />
+    <Image Include="GUI\imagesets\logo.png" />
+    <Image Include="GUI\imagesets\OgreTrayImages.png" />
+    <Image Include="GUI\imagesets\SampleBrowser.png" />
+    <Image Include="GUI\imagesets\SpaceBackground.jpg" />
+    <Image Include="GUI\imagesets\TaharezLook.png" />
+    <Image Include="GUI\imagesets\vanilla.png" />
+    <Image Include="GUI\imagesets\WindowsLook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xsd Include="GUI\xml_schemas\Animation.xsd" />
+    <Xsd Include="GUI\xml_schemas\CEGUIConfig.xsd" />
+    <Xsd Include="GUI\xml_schemas\Falagard.xsd" />
+    <Xsd Include="GUI\xml_schemas\Font.xsd" />
+    <Xsd Include="GUI\xml_schemas\GUIScheme.xsd" />
+    <Xsd Include="GUI\xml_schemas\Imageset.xsd" />
+    <Xsd Include="GUI\xml_schemas\Samples.xsd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

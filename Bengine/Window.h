@@ -24,7 +24,7 @@ namespace Bengine
 
 	private:
 		SDL_Window* m_sdlWindow = NULL;
-		int m_screenWidth = 0;
-		int m_screenHeight = 0;
+		int m_screenWidth { 0 };
+		int m_screenHeight { 0 };
 	};
 }

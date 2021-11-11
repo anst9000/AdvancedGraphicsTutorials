@@ -1,33 +1,42 @@
 #pragma once
 
-#include <GL/glew.h>
 #include <string>
+#include <GL/glew.h>
 
-namespace Bengine
-{
-	class GLSLProgram
-	{
-	public:
-		GLSLProgram();
-		~GLSLProgram();
+namespace Bengine {
 
-		void compileShaders(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath);
+    //This class handles the compilation, linking, and usage of a GLSL shader program.
+    //Reference: http://www.opengl.org/wiki/Shader_Compilation
+    class GLSLProgram
+    {
+    public:
+        GLSLProgram();
+        ~GLSLProgram();
 
-		void linkShaders();
-		void addAttribute(const std::string& attributeName);
+        void compileShaders(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath);
 
-		GLint getUniformLocation(const std::string uniformName);
+        void compileShadersFromSource(const char* vertexSource, const char* fragmentSource);
 
-		void use();
-		void unuse();
+        void linkShaders();
 
-	private:
-		void compileShader(const std::string& filePath, GLuint id);
+        void addAttribute(const std::string& attributeName);
 
-		int m_numAttributes = 0;
-		GLuint m_programID = 0;
+        GLint getUniformLocation(const std::string& uniformName);
 
-		GLuint m_vertexShaderID = 0;
-		GLuint m_fragmentShaderID = 0;
-	};
+        void use();
+        void unuse();
+
+        void dispose();
+    private:
+
+        int _numAttributes;
+
+        void compileShader(const char* source, const std::string& name, GLuint id);
+
+        GLuint _programID;
+
+        GLuint _vertexShaderID;
+        GLuint _fragmentShaderID;
+    };
+
 }

@@ -153,6 +153,7 @@
     <ClCompile Include="Bengine.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="BengineErrors.cpp" />
+    <ClCompile Include="DebugRenderer.cpp" />
     <ClCompile Include="GLSLProgram.cpp" />
     <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="Bengine.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="BengineErrors.h" />
+    <ClInclude Include="DebugRenderer.h" />
     <ClInclude Include="GLSLProgram.h" />
     <ClInclude Include="GLTexture.h" />
     <ClInclude Include="IGameScreen.h" />
@@ -191,6 +193,7 @@
     <ClInclude Include="SpriteBatch.h" />
     <ClInclude Include="SpriteFont.h" />
     <ClInclude Include="TextureCache.h" />
+    <ClInclude Include="TileSheet.h" />
     <ClInclude Include="Timing.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Window.h" />
