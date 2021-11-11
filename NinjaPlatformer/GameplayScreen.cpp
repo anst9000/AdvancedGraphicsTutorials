@@ -8,7 +8,6 @@
 
 #include "GameplayScreen.h"
 
-
 GameplayScreen::GameplayScreen( Bengine::Window* window )
     : m_window( window )
 {
@@ -43,6 +42,8 @@ void GameplayScreen::onEntry()
 {
     b2Vec2 gravity( 0.0f, -35.0f );
     m_world = std::make_unique<b2World>( gravity );
+
+    m_debugRenderer.init();
 
     // Make the ground
     b2BodyDef groundBodyDef;
@@ -95,10 +96,13 @@ void GameplayScreen::onEntry()
     m_player.init( m_world.get(), glm::vec2( 0.0f, 15.0f ), glm::vec2( 1.0f, 1.5f ), Bengine::ColorRGBA8( 255, 255, 255, 255 ) );
 }
 
-void GameplayScreen::onExit() {
+void GameplayScreen::onExit()
+{
+    m_debugRenderer.dispose();
 }
 
-void GameplayScreen::update() {
+void GameplayScreen::update()
+{
     m_camera.update();
     checkInput();
     m_player.update( m_game->inputManager );
@@ -107,7 +111,9 @@ void GameplayScreen::update() {
     m_world->Step( 1.0f / 60.0f, 6, 2 );
 }
 
-void GameplayScreen::draw() {
+
+void GameplayScreen::draw()
+{
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
 
@@ -137,6 +143,34 @@ void GameplayScreen::draw() {
     m_spriteBatch.render();
 
     m_textureProgram.unuse();
+
+    // Debug rendering
+    if ( m_renderDebug )
+    {
+        glm::vec4 destRect;
+
+        for ( auto& b : m_boxes )
+        {
+            //destRect.x = b.getBody()->GetPosition().x - b.getDimensions().x / 2.0f;
+            //destRect.y = b.getBody()->GetPosition().y - b.getDimensions().y / 2.0f;
+            //destRect.z = b.getDimensions().x;
+            //destRect.w = b.getDimensions().y;
+            //m_debugRenderer.drawBox( destRect, Bengine::ColorRGBA8( 255, 255, 255, 255 ), b.getBody()->GetAngle() );
+            m_debugRenderer.drawCircle( glm::vec2( b.getBody()->GetPosition().x, b.getBody()->GetPosition().y ),
+                Bengine::ColorRGBA8( 255, 255, 255, 255 ), b.getDimensions().x / 2.0f );
+        }
+
+        // Render player
+        auto b = m_player.getBox();
+        destRect.x = b.getBody()->GetPosition().x - b.getDimensions().x / 2.0f;
+        destRect.y = b.getBody()->GetPosition().y - b.getDimensions().y / 2.0f;
+        destRect.z = b.getDimensions().x;
+        destRect.w = b.getDimensions().y;
+        m_debugRenderer.drawBox( destRect, Bengine::ColorRGBA8( 255, 255, 255, 255 ), b.getBody()->GetAngle() );
+
+        m_debugRenderer.end();
+        m_debugRenderer.render( projectionMatrix, 2.0f );
+    }
 }
 
 void GameplayScreen::checkInput() {

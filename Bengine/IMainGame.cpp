@@ -30,11 +30,16 @@ namespace Bengine
 
 			inputManager.update();
 
+			// Call the custom update and draw method
 			update();
-			draw();
 
-			m_fps = limiter.end();
-			m_window.swapBuffer();
+			if ( m_isRunning )
+			{
+				draw();
+
+				m_fps = limiter.end();
+				m_window.swapBuffer();
+			}
 		}
 	}
 

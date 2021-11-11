@@ -10,6 +10,7 @@
 #include <Bengine/Camera2D.h>
 #include <Bengine/GLTexture.h>
 #include <Bengine/Window.h>
+#include <Bengine/DebugRenderer.h>
 
 #include "Box.h"
 #include "Player.h"
@@ -46,6 +47,9 @@ private:
     Bengine::Camera2D m_camera;
     Bengine::GLTexture m_texture;
     Bengine::Window* m_window;
+    Bengine::DebugRenderer m_debugRenderer;
+
+    bool m_renderDebug = true;
 
     Player m_player;
     std::vector<Box> m_boxes;
