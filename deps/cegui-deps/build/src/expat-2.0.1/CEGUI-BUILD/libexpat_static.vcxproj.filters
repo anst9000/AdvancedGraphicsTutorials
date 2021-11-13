@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\expat-2.0.1\lib\xmlrole.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\expat-2.0.1\lib\xmltok.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\expat-2.0.1\lib\xmlparse.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\expat-2.0.1\CEGUI-BUILD\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A84B0C1E-8BB4-3F42-AEF5-251AF2AAEA5B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

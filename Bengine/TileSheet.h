@@ -3,15 +3,19 @@
 #include "GLTexture.h"
 #include <glm/glm.hpp>
 
-namespace Bengine {
-    class TileSheet {
+namespace Bengine
+{
+    class TileSheet
+    {
     public:
-        void init(const GLTexture& texture, const glm::ivec2& tileDims) {
+        void init( const GLTexture& texture, const glm::ivec2& tileDims )
+        {
             this->texture = texture;
             this->dims = tileDims;
         }
 
-        glm::vec4 getUVs(int index) {
+        glm::vec4 getUVs( int index )
+        {
             int xTile = index % dims.x;
             int yTile = index / dims.x;
 

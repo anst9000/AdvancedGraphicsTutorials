@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_compile.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_config.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_dfa_exec.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_exec.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_fullinfo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_get.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_globals.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_info.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_maketables.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_newline.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_ord2utf8.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_refcount.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_study.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_tables.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_try_flipped.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_ucd.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_valid_utf8.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_version.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\pcre_xclass.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\pcre-8.12\pcre_chartables.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\1b7e0b75e9e9a76abdd6b20f91aee23f\pcre_chartables.c.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\src\pcre-8.12\CEGUI-BUILD\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{08439281-A496-3469-B211-46976B06418B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A84B0C1E-8BB4-3F42-AEF5-251AF2AAEA5B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0F61D0FE-5372-392B-9F0F-33F046A0CE7F}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>CEGUISampleFramework-0.8</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CEGUISampleFramework-0.8.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CEGUISampleFramework-0.8_d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CEGUISampleFramework-0.8.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CEGUISampleFramework-0.8</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CEGUISampleFramework-0.8.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CEGUISampleFramework-0.8</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CEGUISampleFramework-0.8.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CEGUISampleFramework-0.8</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;GLFW_DLL;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;GLFW_DLL;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;..\..\dependencies\lib\dynamic\glfw_d.lib;..\lib\CEGUIOpenGLRenderer-0_d.lib;..\lib\CEGUIBase-0_d.lib;..\..\dependencies\lib\dynamic\freetype_d.lib;..\..\dependencies\lib\dynamic\pcre_d.lib;winmm.lib;DbgHelp.lib;opengl32.lib;glu32.lib;..\..\dependencies\lib\dynamic\glew_d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build/lib/CEGUISampleFramework-0.8_d.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build/bin/CEGUISampleFramework-0.8_d.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;..\..\dependencies\lib\dynamic\glfw.lib;..\lib\CEGUIOpenGLRenderer-0.lib;..\lib\CEGUIBase-0.lib;..\..\dependencies\lib\dynamic\freetype.lib;..\..\dependencies\lib\dynamic\pcre.lib;winmm.lib;opengl32.lib;glu32.lib;..\..\dependencies\lib\dynamic\glew.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build/lib/CEGUISampleFramework-0.8.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build/bin/CEGUISampleFramework-0.8.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;..\..\dependencies\lib\dynamic\glfw.lib;..\lib\CEGUIOpenGLRenderer-0.lib;..\lib\CEGUIBase-0.lib;..\..\dependencies\lib\dynamic\freetype.lib;..\..\dependencies\lib\dynamic\pcre.lib;winmm.lib;opengl32.lib;glu32.lib;..\..\dependencies\lib\dynamic\glew.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build/lib/CEGUISampleFramework-0.8.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build/bin/CEGUISampleFramework-0.8.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_DLL;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cegui\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;..\..\dependencies\lib\dynamic\glfw.lib;..\lib\CEGUIOpenGLRenderer-0.lib;..\lib\CEGUIBase-0.lib;..\..\dependencies\lib\dynamic\freetype.lib;..\..\dependencies\lib\dynamic\pcre.lib;winmm.lib;opengl32.lib;glu32.lib;..\..\dependencies\lib\dynamic\glew.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build/lib/CEGUISampleFramework-0.8.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build/bin/CEGUISampleFramework-0.8.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/samples_framework/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7 -BC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build --check-stamp-file C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build/samples_framework/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cmake\templates\VisualStudioUserFile.vcxproj.user.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples_framework\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/samples_framework/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7 -BC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build --check-stamp-file C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build/samples_framework/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cmake\templates\VisualStudioUserFile.vcxproj.user.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples_framework\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/samples_framework/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7 -BC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build --check-stamp-file C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build/samples_framework/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cmake\templates\VisualStudioUserFile.vcxproj.user.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples_framework\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/samples_framework/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7 -BC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build --check-stamp-file C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-0.8.7/build/samples_framework/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\cmake\templates\VisualStudioUserFile.vcxproj.user.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples_framework\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\src\SamplesFrameworkBase.cpp" />
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\src\SamplesFramework.cpp" />
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\src\CEGuiBaseApplication.cpp" />
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\src\CEGuiRendererSelector.cpp" />
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\src\Samples_xmlHandler.cpp" />
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\src\SampleData.cpp" />
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\src\MetaDataWindowManager.cpp" />
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\src\SamplesBrowserManager.cpp" />
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\src\Win32AppHelper.cpp" />
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\src\Win32CEGuiRendererSelector.cpp" />
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\src\CEGuiGLFWSharedBase.cpp" />
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\src\CEGuiGLFW2SharedBase.cpp" />
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\src\CEGuiOpenGLBaseApplication.cpp" />
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\src\CEGuiOpenGL3BaseApplication.cpp" />
+    <ClInclude Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include\Sample.h" />
+    <ClInclude Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include\SamplesFrameworkBase.h" />
+    <ClInclude Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include\SamplesFramework.h" />
+    <ClInclude Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include\CEGuiBaseApplication.h" />
+    <ClInclude Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include\CEGuiRendererSelector.h" />
+    <ClInclude Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include\Samples_xmlHandler.h" />
+    <ClInclude Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include\SampleData.h" />
+    <ClInclude Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include\MetaDataWindowManager.h" />
+    <ClInclude Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples_framework\include\SamplesBrowserManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\ZERO_CHECK.vcxproj">
+      <Project>{4FEE6A54-0082-3974-BD54-E237F38FAEC1}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\src\CEGUIBase-0.vcxproj">
+      <Project>{00CBE5E9-9B8B-34C8-BFD9-78C4B02EA864}</Project>
+      <Name>CEGUIBase-0</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\CommonDialogsDemo\CEGUICommonDialogsDemo.vcxproj">
+      <Project>{328B875C-EA4B-368B-BD42-6744243619B7}</Project>
+      <Name>CEGUICommonDialogsDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\src\WindowRendererSets\Core\CEGUICoreWindowRendererSet.vcxproj">
+      <Project>{4519DEC3-1489-38CB-9E3D-C530DF677F2A}</Project>
+      <Name>CEGUICoreWindowRendererSet</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\Demo6\CEGUIDemo6.vcxproj">
+      <Project>{3D40B4A2-30D4-3431-BBA4-8EEED5113806}</Project>
+      <Name>CEGUIDemo6</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\DragDropDemo\CEGUIDragDropDemo.vcxproj">
+      <Project>{15CB5C75-65CF-3C4B-AFBC-92368A15FCC2}</Project>
+      <Name>CEGUIDragDropDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\EditboxValidationDemo\CEGUIEditboxValidationDemo.vcxproj">
+      <Project>{302CBC35-52D4-3296-8F22-3A919774729E}</Project>
+      <Name>CEGUIEditboxValidationDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\EffectsDemo\CEGUIEffectsDemo.vcxproj">
+      <Project>{E54B42E4-76DC-3947-991F-8D7DEC37E17B}</Project>
+      <Name>CEGUIEffectsDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\src\XMLParserModules\Expat\CEGUIExpatParser.vcxproj">
+      <Project>{CC2C2E88-D56C-3202-AB16-7504940B9806}</Project>
+      <Name>CEGUIExpatParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\FontDemo\CEGUIFontDemo.vcxproj">
+      <Project>{A95430FE-1B8E-32F2-8BDE-1D50926D3C0B}</Project>
+      <Name>CEGUIFontDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\GameMenu\CEGUIGameMenuDemo.vcxproj">
+      <Project>{C473AE6D-047A-3E8B-8738-97890AD953A3}</Project>
+      <Name>CEGUIGameMenuDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\HUDDemo\CEGUIHUDDemo.vcxproj">
+      <Project>{370C6C0F-C69D-387B-8802-2BB73DE80601}</Project>
+      <Name>CEGUIHUDDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\HelloWorld\CEGUIHelloWorldDemo.vcxproj">
+      <Project>{87DDEF77-E0CA-3113-9ADC-59B2481B8DCE}</Project>
+      <Name>CEGUIHelloWorldDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\InventoryDemo\CEGUIInventoryDemo.vcxproj">
+      <Project>{5C235822-995C-3B83-835F-1F76000F6E44}</Project>
+      <Name>CEGUIInventoryDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\LookNFeelOverview\CEGUILookNFeelOverviewDemo.vcxproj">
+      <Project>{01D90D1E-C666-362D-B572-EF06CFB873C0}</Project>
+      <Name>CEGUILookNFeelOverviewDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\Minesweeper\CEGUIMinesweeper.vcxproj">
+      <Project>{539562C0-7909-3D2E-8F27-2CA9DA8C6B9E}</Project>
+      <Name>CEGUIMinesweeper</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\src\RendererModules\OpenGL\CEGUIOpenGLRenderer-0.vcxproj">
+      <Project>{E187D59F-2B65-3A6B-AE3B-F3D01FDCF779}</Project>
+      <Name>CEGUIOpenGLRenderer-0</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\cegui\src\ImageCodecModules\SILLY\CEGUISILLYImageCodec.vcxproj">
+      <Project>{3474A38D-414C-3D38-853C-D546DE24B387}</Project>
+      <Name>CEGUISILLYImageCodec</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\ScrollablePaneDemo\CEGUIScrollablePaneDemo.vcxproj">
+      <Project>{5C75FF4D-EA37-342B-BE2E-EB7C06264C7D}</Project>
+      <Name>CEGUIScrollablePaneDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\TabControlDemo\CEGUITabControlDemo.vcxproj">
+      <Project>{94BB1897-002A-3D3C-91DD-C2A84EE8C080}</Project>
+      <Name>CEGUITabControlDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\TextDemo\CEGUITextDemo.vcxproj">
+      <Project>{31EBCD65-561A-335A-B56B-C8144894A640}</Project>
+      <Name>CEGUITextDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\TreeDemo\CEGUITreeDemo.vcxproj">
+      <Project>{1B8CB0A1-EF95-34BB-AAE8-FA36BA7AB188}</Project>
+      <Name>CEGUITreeDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\samples\WidgetDemo\CEGUIWidgetDemo.vcxproj">
+      <Project>{4502ADD4-F52B-3301-B957-EFDD1154B31E}</Project>
+      <Name>CEGUIWidgetDemo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

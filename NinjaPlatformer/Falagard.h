@@ -4264,9 +4264,9 @@ namespace NinjaPlatformer {
         System::Xml::Serialization::XmlSchemaProviderAttribute(L"GetTypedTableSchema")]
         ref class ChildDataTable : public ::System::Data::DataTable, public ::System::Collections::IEnumerable {
             
-            private: ::System::Data::DataColumn^  columntype;
-            
             private: ::System::Data::DataColumn^  columnnameSuffix;
+            
+            private: ::System::Data::DataColumn^  columntype;
             
             private: ::System::Data::DataColumn^  columnrenderer;
             
@@ -4301,13 +4301,13 @@ namespace NinjaPlatformer {
             ChildDataTable(::System::Runtime::Serialization::SerializationInfo^  info, ::System::Runtime::Serialization::StreamingContext context);
             public: [System::Diagnostics::DebuggerNonUserCodeAttribute, 
             System::CodeDom::Compiler::GeneratedCodeAttribute(L"System.Data.Design.TypedDataSetGenerator", L"4.0.0.0")]
-            property ::System::Data::DataColumn^  typeColumn {
+            property ::System::Data::DataColumn^  nameSuffixColumn {
                 ::System::Data::DataColumn^  get();
             }
             
             public: [System::Diagnostics::DebuggerNonUserCodeAttribute, 
             System::CodeDom::Compiler::GeneratedCodeAttribute(L"System.Data.Design.TypedDataSetGenerator", L"4.0.0.0")]
-            property ::System::Data::DataColumn^  nameSuffixColumn {
+            property ::System::Data::DataColumn^  typeColumn {
                 ::System::Data::DataColumn^  get();
             }
             
@@ -4361,8 +4361,8 @@ namespace NinjaPlatformer {
             public: [System::Diagnostics::DebuggerNonUserCodeAttribute]
             [System::CodeDom::Compiler::GeneratedCodeAttribute(L"System.Data.Design.TypedDataSetGenerator", L"4.0.0.0")]
             NinjaPlatformer::NewDataSet::ChildRow^  AddChildRow(
-                        System::String^  type, 
                         System::String^  nameSuffix, 
+                        System::String^  type, 
                         System::String^  renderer, 
                         System::String^  look, 
                         System::Boolean autoWindow, 
@@ -9976,14 +9976,14 @@ namespace NinjaPlatformer {
             ChildRow(::System::Data::DataRowBuilder^  rb);
             public: [System::Diagnostics::DebuggerNonUserCodeAttribute, 
             System::CodeDom::Compiler::GeneratedCodeAttribute(L"System.Data.Design.TypedDataSetGenerator", L"4.0.0.0")]
-            property System::String^  type {
+            property System::String^  nameSuffix {
                 System::String^  get();
                 System::Void set(System::String^  value);
             }
             
             public: [System::Diagnostics::DebuggerNonUserCodeAttribute, 
             System::CodeDom::Compiler::GeneratedCodeAttribute(L"System.Data.Design.TypedDataSetGenerator", L"4.0.0.0")]
-            property System::String^  nameSuffix {
+            property System::String^  type {
                 System::String^  get();
                 System::Void set(System::String^  value);
             }
@@ -20523,12 +20523,12 @@ namespace NinjaPlatformer {
         this->InitVars();
     }
     
-    inline ::System::Data::DataColumn^  NewDataSet::ChildDataTable::typeColumn::get() {
-        return this->columntype;
-    }
-    
     inline ::System::Data::DataColumn^  NewDataSet::ChildDataTable::nameSuffixColumn::get() {
         return this->columnnameSuffix;
+    }
+    
+    inline ::System::Data::DataColumn^  NewDataSet::ChildDataTable::typeColumn::get() {
+        return this->columntype;
     }
     
     inline ::System::Data::DataColumn^  NewDataSet::ChildDataTable::rendererColumn::get() {
@@ -20564,14 +20564,14 @@ namespace NinjaPlatformer {
     }
     
     inline NinjaPlatformer::NewDataSet::ChildRow^  NewDataSet::ChildDataTable::AddChildRow(
-                System::String^  type, 
                 System::String^  nameSuffix, 
+                System::String^  type, 
                 System::String^  renderer, 
                 System::String^  look, 
                 System::Boolean autoWindow, 
                 NinjaPlatformer::NewDataSet::WidgetLookRow^  parentWidgetLookRowByWidgetLook_Child) {
         NinjaPlatformer::NewDataSet::ChildRow^  rowChildRow = (cli::safe_cast<NinjaPlatformer::NewDataSet::ChildRow^  >(this->NewRow()));
-        cli::array< ::System::Object^  >^  columnValuesArray = gcnew cli::array< ::System::Object^  >(7) {type, nameSuffix, renderer, 
+        cli::array< ::System::Object^  >^  columnValuesArray = gcnew cli::array< ::System::Object^  >(7) {nameSuffix, type, renderer, 
             look, autoWindow, nullptr, nullptr};
         if (parentWidgetLookRowByWidgetLook_Child != nullptr) {
             columnValuesArray[6] = parentWidgetLookRowByWidgetLook_Child[2];
@@ -20596,8 +20596,8 @@ namespace NinjaPlatformer {
     }
     
     inline ::System::Void NewDataSet::ChildDataTable::InitVars() {
-        this->columntype = __super::Columns[L"type"];
         this->columnnameSuffix = __super::Columns[L"nameSuffix"];
+        this->columntype = __super::Columns[L"type"];
         this->columnrenderer = __super::Columns[L"renderer"];
         this->columnlook = __super::Columns[L"look"];
         this->columnautoWindow = __super::Columns[L"autoWindow"];
@@ -20606,10 +20606,10 @@ namespace NinjaPlatformer {
     }
     
     inline ::System::Void NewDataSet::ChildDataTable::InitClass() {
-        this->columntype = (gcnew ::System::Data::DataColumn(L"type", ::System::String::typeid, nullptr, ::System::Data::MappingType::Attribute));
-        __super::Columns->Add(this->columntype);
         this->columnnameSuffix = (gcnew ::System::Data::DataColumn(L"nameSuffix", ::System::String::typeid, nullptr, ::System::Data::MappingType::Attribute));
         __super::Columns->Add(this->columnnameSuffix);
+        this->columntype = (gcnew ::System::Data::DataColumn(L"type", ::System::String::typeid, nullptr, ::System::Data::MappingType::Attribute));
+        __super::Columns->Add(this->columntype);
         this->columnrenderer = (gcnew ::System::Data::DataColumn(L"renderer", ::System::String::typeid, nullptr, ::System::Data::MappingType::Attribute));
         __super::Columns->Add(this->columnrenderer);
         this->columnlook = (gcnew ::System::Data::DataColumn(L"look", ::System::String::typeid, nullptr, ::System::Data::MappingType::Attribute));
@@ -20622,10 +20622,10 @@ namespace NinjaPlatformer {
         __super::Columns->Add(this->columnWidgetLook_Id);
         this->Constraints->Add((gcnew ::System::Data::UniqueConstraint(L"Constraint1", gcnew cli::array< ::System::Data::DataColumn^  >(1) {this->columnChild_Id}, 
                 true)));
-        this->columntype->AllowDBNull = false;
-        this->columntype->Namespace = L"";
         this->columnnameSuffix->AllowDBNull = false;
         this->columnnameSuffix->Namespace = L"";
+        this->columntype->AllowDBNull = false;
+        this->columntype->Namespace = L"";
         this->columnrenderer->Namespace = L"";
         this->columnrenderer->DefaultValue = (cli::safe_cast<System::String^  >(L""));
         this->columnlook->Namespace = L"";
@@ -28912,18 +28912,18 @@ L" DBNull.",
         this->tableChild = (cli::safe_cast<NinjaPlatformer::NewDataSet::ChildDataTable^  >(this->Table));
     }
     
-    inline System::String^  NewDataSet::ChildRow::type::get() {
-        return (cli::safe_cast<::System::String^  >(this[this->tableChild->typeColumn]));
-    }
-    inline System::Void NewDataSet::ChildRow::type::set(System::String^  value) {
-        this[this->tableChild->typeColumn] = value;
-    }
-    
     inline System::String^  NewDataSet::ChildRow::nameSuffix::get() {
         return (cli::safe_cast<::System::String^  >(this[this->tableChild->nameSuffixColumn]));
     }
     inline System::Void NewDataSet::ChildRow::nameSuffix::set(System::String^  value) {
         this[this->tableChild->nameSuffixColumn] = value;
+    }
+    
+    inline System::String^  NewDataSet::ChildRow::type::get() {
+        return (cli::safe_cast<::System::String^  >(this[this->tableChild->typeColumn]));
+    }
+    inline System::Void NewDataSet::ChildRow::type::set(System::String^  value) {
+        this[this->tableChild->typeColumn] = value;
     }
     
     inline System::String^  NewDataSet::ChildRow::renderer::get() {

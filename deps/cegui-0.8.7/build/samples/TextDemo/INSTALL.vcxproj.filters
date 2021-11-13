@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\build\CMakeFiles\939345b9f2c4c72d58fddb3a16293b45\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{A9CB5414-C956-3163-86B2-B152D5DFFAFA}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

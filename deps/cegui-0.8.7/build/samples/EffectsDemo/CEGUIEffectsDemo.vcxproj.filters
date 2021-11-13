@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\EffectsDemo\EffectsDemo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\EffectsDemo\EffectsDemo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include\Sample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\common\include\SampleBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-0.8.7\samples\EffectsDemo\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{2319747B-4893-3E0A-A34A-62321C1B85EA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{3E357F4E-ACE0-3D62-9E31-B733DCEF2BDD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

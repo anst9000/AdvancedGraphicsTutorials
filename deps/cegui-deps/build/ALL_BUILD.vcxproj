@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{876E8D64-7A32-3271-A4E2-AB5DE4E96FC0}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps -BC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps/build --check-stamp-file C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeCCompiler.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeCXXCompiler.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeRCCompiler.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeSystem.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\cmake\CEGUI-deps-macros.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\cmake\FindDirectXSDK.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps -BC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps/build --check-stamp-file C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeCCompiler.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeCXXCompiler.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeRCCompiler.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeSystem.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\cmake\CEGUI-deps-macros.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\cmake\FindDirectXSDK.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps -BC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps/build --check-stamp-file C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeCCompiler.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeCXXCompiler.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeRCCompiler.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeSystem.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\cmake\CEGUI-deps-macros.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\cmake\FindDirectXSDK.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps -BC:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps/build --check-stamp-file C:/Users/HP/source/repos/PrWithBen/GraphicsTutorials/deps/cegui-deps/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeCCompiler.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeCXXCompiler.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeRCCompiler.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\3.22.0-rc2\CMakeSystem.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\cmake\CEGUI-deps-macros.cmake;C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\cmake\FindDirectXSDK.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\ZERO_CHECK.vcxproj">
+      <Project>{C4395C02-0F70-3F8F-AE9E-C7A9B703C1B7}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\POST_BUILD_CLEANUP.vcxproj">
+      <Project>{8B0D19BB-B10C-3304-9D6A-5421F72E34DB}</Project>
+      <Name>POST_BUILD_CLEANUP</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\SILLY\CEGUI-BUILD\SILLY.vcxproj">
+      <Project>{6E759867-361F-33D2-8922-1BE31E4A75EA}</Project>
+      <Name>SILLY</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\SILLY\CEGUI-BUILD\SILLY_static.vcxproj">
+      <Project>{F7EE263A-3BDD-3FB5-A27A-2007E7806BEE}</Project>
+      <Name>SILLY_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\pcre-8.12\CEGUI-BUILD\dftables.vcxproj">
+      <Project>{54E0BA4C-6220-3B32-84C5-5EE58CE8E6E4}</Project>
+      <Name>dftables</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\freetype-2.4.4\CEGUI-BUILD\freetype.vcxproj">
+      <Project>{E4054A81-2D22-37E2-8BD1-E58D61C4D1E1}</Project>
+      <Name>freetype</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\freetype-2.4.4\CEGUI-BUILD\freetype_static.vcxproj">
+      <Project>{9FD76C11-CE89-326F-9D27-284B76680E91}</Project>
+      <Name>freetype_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\glew-1.7.0\CEGUI-BUILD\glew.vcxproj">
+      <Project>{247158AD-7169-3D3C-B269-7CD5B1EC3B18}</Project>
+      <Name>glew</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\glew-1.7.0\CEGUI-BUILD\glew_static.vcxproj">
+      <Project>{6ED01232-2295-36B1-A1E3-EC49B54337BC}</Project>
+      <Name>glew_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\glfw-2.7.2\CEGUI-BUILD\glfw.vcxproj">
+      <Project>{BBCE9DD5-F3BF-321E-A992-7814A2EAE81C}</Project>
+      <Name>glfw</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\glfw-2.7.2\CEGUI-BUILD\glfw_static.vcxproj">
+      <Project>{B4404594-C987-3DDD-A2E1-41EB0B90C5F2}</Project>
+      <Name>glfw_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\glm-0.9.4.5\CEGUI-BUILD\glm.vcxproj">
+      <Project>{62493102-636A-3A76-BA34-58D70EDD3EE9}</Project>
+      <Name>glm</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\jpeg-8c\CEGUI-BUILD\jpeg.vcxproj">
+      <Project>{45E83178-A567-3F2B-A83D-3EF8365244F8}</Project>
+      <Name>jpeg</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\jpeg-8c\CEGUI-BUILD\jpeg_static.vcxproj">
+      <Project>{E13AA56B-F63F-3CD7-B6CC-C2947B8A4527}</Project>
+      <Name>jpeg_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\expat-2.0.1\CEGUI-BUILD\libexpat.vcxproj">
+      <Project>{D3B06ACC-2448-3DE7-8A7E-47D8888044D5}</Project>
+      <Name>libexpat</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\expat-2.0.1\CEGUI-BUILD\libexpat_static.vcxproj">
+      <Project>{FE575670-023B-32D9-89E8-5F004AFAD364}</Project>
+      <Name>libexpat_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\libpng-1.4.7\CEGUI-BUILD\libpng.vcxproj">
+      <Project>{5B06ED06-3D5A-3AF2-9004-3F05F2F4AEA6}</Project>
+      <Name>libpng</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\libpng-1.4.7\CEGUI-BUILD\libpng_static.vcxproj">
+      <Project>{129AFCEC-2BCF-3003-B00C-E5D005AF2A6E}</Project>
+      <Name>libpng_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\lua-5.1.4\CEGUI-BUILD\lua.vcxproj">
+      <Project>{3884B9E6-4D79-31A9-AE8C-D2233CBBC4D3}</Project>
+      <Name>lua</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\lua-5.1.4\CEGUI-BUILD\lua_static.vcxproj">
+      <Project>{F716126D-EBD7-3F28-887D-494EBF740305}</Project>
+      <Name>lua_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\pcre-8.12\CEGUI-BUILD\pcre.vcxproj">
+      <Project>{42A52800-F0C3-3C7B-9A02-94CF24318A63}</Project>
+      <Name>pcre</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\pcre-8.12\CEGUI-BUILD\pcre_static.vcxproj">
+      <Project>{D318E4D3-E041-367F-BAED-782CED35C055}</Project>
+      <Name>pcre_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\tolua++-1.0.93\CEGUI-BUILD\toluapp.vcxproj">
+      <Project>{9281AD49-E505-3A78-BC3A-7EA277AF12DF}</Project>
+      <Name>toluapp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\tolua++-1.0.93\CEGUI-BUILD\toluapp_static.vcxproj">
+      <Project>{BD5CCA33-248D-324D-BC71-A1F8A31394AD}</Project>
+      <Name>toluapp_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\zlib-1.2.5\CEGUI-BUILD\zlib.vcxproj">
+      <Project>{8B414056-3D08-3CE6-9DDC-A89907324BF5}</Project>
+      <Name>zlib</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\HP\source\repos\PrWithBen\GraphicsTutorials\deps\cegui-deps\build\src\zlib-1.2.5\CEGUI-BUILD\zlib_static.vcxproj">
+      <Project>{73811220-14FA-3111-A49D-1303A24C1116}</Project>
+      <Name>zlib_static</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
